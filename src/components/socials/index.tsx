@@ -5,6 +5,7 @@ import { KakaoEnvironments } from 'src/env/kakao/kakao.env';
 import { SocialsStyle } from './styles';
 
 function Socials() {
+  console.log();
   return (
     <SocialsStyle.Wrapper>
       <a
