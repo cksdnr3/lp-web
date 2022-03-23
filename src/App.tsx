@@ -20,17 +20,13 @@ function App() {
         }
       }
     },
-    onError: (err) => {
-      console.log(err);
-    },
+    onError: console.log,
   });
   useQuery('/me', () => window.Kakao.API.request({ url: KakaoEnvironments.api_url.ME }), {
     onSuccess: (response) => {
       console.log(response.kakao_account.profile);
     },
-    onError: (err) => {
-      console.log(err);
-    },
+    onError: console.log,
   });
 
   return (
