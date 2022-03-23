@@ -1,13 +1,10 @@
-import axios from 'axios';
+import axios, { AxiosPromise } from 'axios';
+import { ILoginRequestBody } from './types';
 
 export namespace authAPI {
   export const post = {
-    login(body: { email: string; password: string }) {
-      return axios.post('/login', body, {
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
+    login(body: ILoginRequestBody): AxiosPromise<void> {
+      return axios.post('/login', body);
     },
   };
 }

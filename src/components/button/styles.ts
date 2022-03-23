@@ -4,7 +4,7 @@ export namespace ButtonStyle {
   export const Button = styled.button`
     width: 100%;
     border-radius: 6px;
-    padding: 20px 0px;
+    padding: 15px 0px;
     background-color: rgb(216, 12, 24);
     text-align: center;
     font-weight: 600;

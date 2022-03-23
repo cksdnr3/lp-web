@@ -3,16 +3,8 @@ import styled from 'styled-components';
 export namespace FormStyle {
   export const Form = styled.form`
     ${({ theme }) => theme.flexSet({ direction: 'column' })};
-    min-width: 520px;
-    max-width: 520px;
-    background-color: #fff;
-    margin: 0 auto;
-    padding: 60px;
-    border-radius: 5px;
-    box-shadow: rgb(0 0 0 / 10%) 0px 3px 6px 0px;
-
     & > *:not(:first-child) {
-      margin-top: 30px;
+      margin-top: 25px;
     }
   `;
 
@@ -23,8 +15,8 @@ export namespace FormStyle {
   `;
 
   export const Content = styled.div`
-    & > div {
-      margin-top: 8px;
+    & > div:not(:first-of-type) {
+      margin-top: 13px;
     }
 
     & > div > label > input {

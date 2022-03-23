@@ -15,7 +15,7 @@ export namespace InputStyle {
 
     & > button {
       position: absolute;
-      top: ${({ isLabel }) => (isLabel ? '1.35rem' : '-0.45rem')};
+      top: ${({ isLabel }) => (isLabel ? '1.55rem' : '-0.30rem')};
       right: 0px;
     }
   `;
@@ -29,8 +29,8 @@ export namespace InputStyle {
     transition: background 0.2s;
 
     &[type='password'] {
-      font-size: 1.1125rem;
-      letter-spacing: 8px;
+      font-size: 1.3125rem;
+      letter-spacing: 5px;
     }
 
     &:disabled {

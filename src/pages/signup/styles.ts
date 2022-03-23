@@ -1,27 +1,23 @@
 import styled from 'styled-components';
 
-export namespace SingupStyle {
+export namespace SignupStyle {
   export const Wrapper = styled.div`
     height: 100vh;
     padding-top: 50px;
     background-color: rgb(249, 249, 249);
   `;
 
-  export const Button = styled.button`
-    padding: 9px 13px;
+  export const Container = styled.div`
+    min-width: 500px;
+    max-width: 500px;
+    background-color: #fff;
+    margin: 0 auto;
+    padding: 60px;
     border-radius: 5px;
-    background: rgb(255, 105, 97);
-    color: rgba(255, 255, 255, 0.7);
-    cursor: pointer;
-    transition: background 0.15s;
+    box-shadow: rgb(0 0 0 / 10%) 0px 3px 6px 0px;
 
-    &:hover {
-      background: rgb(255, 105, 97, 0.7);
-    }
-
-    &:disabled {
-      background-color: rgb(206, 208, 218);
-      cursor: not-allowed;
+    & > *:not(:last-of-type) {
+      margin-bottom: 20px;
     }
   `;
 }

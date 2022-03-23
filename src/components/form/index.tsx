@@ -4,14 +4,14 @@ import { HTMLAttributes } from 'react';
 import { FormStyle } from './styles';
 
 interface IFormProps extends HTMLAttributes<HTMLFormElement> {
-  header: ReactElement;
+  header?: ReactElement;
   content: (ReactElement | undefined)[];
-  footer: ReactElement;
+  footer?: ReactElement;
 }
 
 function Form(props: IFormProps) {
   return (
-    <FormStyle.Form onSubmit={props.onSubmit}>
+    <FormStyle.Form {...props} onSubmit={props.onSubmit}>
       <FormStyle.Header>{props.header}</FormStyle.Header>
       <FormStyle.Content>
         {props.content.map((input, i) => (

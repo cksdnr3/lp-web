@@ -140,4 +140,9 @@ export const GlobalStyle = createGlobalStyle`
     outline: none;
     appearance: none;
   }
+  a {
+    color: rgba(96, 154, 233);;
+    text-decoration: none;
+    outline: none
+  }
 `;

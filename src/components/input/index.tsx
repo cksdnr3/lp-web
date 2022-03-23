@@ -51,7 +51,7 @@ function Input(props: IInputProps) {
       <span ref={span}>{props.label}</span>
       <InputStyle.Input {...props} onFocus={onFocus} onBlur={onBlur} disabled={props.disabled} />
       {props.button}
-      {props.isError && <InputStyle.ErrorMessage>{props.errorMsg}</InputStyle.ErrorMessage>}
+      {props.isError === true && <InputStyle.ErrorMessage>{props.errorMsg}</InputStyle.ErrorMessage>}
     </InputStyle.Label>
   );
 }
