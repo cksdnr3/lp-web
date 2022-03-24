@@ -33,13 +33,13 @@ function Input(props: IInputProps) {
     if (span && span.current && !props.value.length) {
       if (isFocused === true) {
         span.current.animate(
-          { fontSize: ['1rem', '0.75rem'], top: ['2.3rem', '0.2rem'] },
+          { fontSize: ['0.9rem', '0.75rem'], top: ['2.3rem', '0.2rem'] },
           { duration: 250, fill: 'forwards' },
         );
       }
       if (isFocused === false) {
         span.current.animate(
-          { fontSize: ['0.75rem', '1rem'], top: ['0.2rem', '2.3rem'] },
+          { fontSize: ['0.75rem', '0.9rem'], top: ['0.2rem', '2.3rem'] },
           { duration: 250, fill: 'forwards' },
         );
       }

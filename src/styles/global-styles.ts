@@ -5,6 +5,7 @@ export const GlobalStyle = createGlobalStyle`
   * {
     box-sizing: border-box;
   }
+
   html,
   body,
   div,
@@ -89,9 +90,10 @@ export const GlobalStyle = createGlobalStyle`
     margin: 0;
     padding: 0;
     border: 0;
-    font-size: 100%;
+    font-size: 14px;
     font: inherit;
     vertical-align: baseline;
+    font-weight: 400;
   }
   /* HTML5 display-role reset for older browsers */
   article,
@@ -109,6 +111,9 @@ export const GlobalStyle = createGlobalStyle`
   }
   body {
     line-height: 1;
+    ${({ theme }) => theme.media.medium`
+    background-color: rgb(248, 248, 248);
+    `}
   }
   ol,
   ul {
@@ -141,7 +146,7 @@ export const GlobalStyle = createGlobalStyle`
     appearance: none;
   }
   a {
-    color: rgba(96, 154, 233);;
+    color: black;
     text-decoration: none;
     outline: none
   }

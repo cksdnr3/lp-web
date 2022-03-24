@@ -1,11 +1,8 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { authAPI } from 'src/apis/auth';
 import { KakaoEnvironments } from 'src/env/kakao/kakao.env';
 import { SocialsStyle } from './styles';
 
 function Socials() {
-  console.log();
   return (
     <SocialsStyle.Wrapper>
       <a
@@ -19,7 +16,7 @@ function Socials() {
           backgroundPosition: 'center',
         }}
         href={`https://${KakaoEnvironments.HOST}/oauth/authorize?client_id=${KakaoEnvironments.REST_API_KEY}&redirect_uri=${KakaoEnvironments.REDIRECT_URI}&response_type=code`}
-      ></a>
+      />
       <a
         style={{
           width: 40,
@@ -30,7 +27,7 @@ function Socials() {
           backgroundRepeat: 'no-repeat',
           backgroundPosition: 'center',
         }}
-      ></a>
+      />
       <a
         style={{
           width: 40,
@@ -41,7 +38,7 @@ function Socials() {
           backgroundRepeat: 'no-repeat',
           backgroundPosition: 'center',
         }}
-      ></a>
+      />
     </SocialsStyle.Wrapper>
   );
 }

@@ -5,5 +5,9 @@ export namespace SignupTooltipStyle {
     text-align: center;
     margin-top: 20px;
     font-size: 0.8rem;
+
+    a {
+      color: rgba(96, 154, 233);
+    }
   `;
 }

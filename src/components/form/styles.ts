@@ -9,9 +9,23 @@ export namespace FormStyle {
   `;
 
   export const Header = styled.div`
-    font-size: 24px;
+    font-size: 2rem;
     font-weight: 600;
-    text-align: left;
+    text-align: center;
+
+    p {
+      font-size: 1rem;
+      font-weight: 400;
+      color: rgb(${({ theme }) => theme.palette.white[300]});
+    }
+
+    ${({ theme }) => theme.media.medium`
+    font-size: 1.5rem;
+
+    p {
+      font-size: 0.8rem;
+    }
+    `}
   `;
 
   export const Content = styled.div`

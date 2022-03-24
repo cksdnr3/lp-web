@@ -2,15 +2,17 @@ import styled from 'styled-components';
 
 export namespace SignupStyle {
   export const Wrapper = styled.div`
-    height: 100vh;
-    padding-top: 50px;
-    background-color: rgb(249, 249, 249);
+    padding: 100px 0;
+
+    ${({ theme }) => theme.media.medium`
+    padding: 0;
+    `}
   `;
 
   export const Container = styled.div`
-    min-width: 500px;
+    ${({ theme }) => theme.flexSet({ direction: 'column' })};
     max-width: 500px;
-    background-color: #fff;
+    background-color: rgb(${({ theme }) => theme.palette.white[100]});
     margin: 0 auto;
     padding: 60px;
     border-radius: 5px;
@@ -19,5 +21,10 @@ export namespace SignupStyle {
     & > *:not(:last-of-type) {
       margin-bottom: 20px;
     }
+    ${({ theme }) => theme.media.medium`
+    padding: 30px;
+    height: 100vh;
+    justify-content: center;
+    `}
   `;
 }

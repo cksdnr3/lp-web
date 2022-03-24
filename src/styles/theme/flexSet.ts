@@ -1,4 +1,9 @@
-export const flexSet = ({ align, justify, direction, wrap }: IFlexSet) => `
+export const flexSet = ({
+  align = 'stretch',
+  justify = 'flex-start',
+  direction = 'row',
+  wrap = 'nowrap',
+}: IFlexSet) => `
   display: flex;
   justify-content: ${justify};
   align-items: ${align};
@@ -7,8 +12,8 @@ export const flexSet = ({ align, justify, direction, wrap }: IFlexSet) => `
 `;
 
 export interface IFlexSet {
-  align?: "start" | "end" | "center";
-  justify?: "start" | "end" | "center" | "space-between";
-  direction?: "column" | "row";
-  wrap?: "wrap";
+  align?: 'stretch' | 'start' | 'end' | 'center';
+  justify?: 'flex-start' | 'start' | 'end' | 'center' | 'space-between';
+  direction?: 'column' | 'row';
+  wrap?: 'wrap' | 'nowrap';
 }

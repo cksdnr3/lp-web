@@ -5,7 +5,7 @@ export namespace ButtonStyle {
     width: 100%;
     border-radius: 6px;
     padding: 15px 0px;
-    background-color: rgb(216, 12, 24);
+    background-color: ${({ theme }) => theme.main.color()};
     text-align: center;
     font-weight: 600;
     font-size: 1.125rem;
@@ -14,12 +14,17 @@ export namespace ButtonStyle {
     transition: background 0.25s;
 
     &:hover {
-      background-color: rgba(216, 12, 24, 0.7);
+      background-color: ${({ theme }) => theme.main.color('dark', 0.7)};
     }
 
     &:disabled {
-      background-color: rgba(216, 12, 24, 0.5);
+      background-color: ${({ theme }) => theme.main.color('dark', 0.5)};
       cursor: not-allowed;
     }
+
+    ${({ theme }) => theme.media.medium`
+    padding: 12px 5px;
+    font-size: 14px;
+    `}
   `;
 }

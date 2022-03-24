@@ -40,7 +40,7 @@ export namespace InputStyle {
 
   export const ErrorMessage = styled.div`
     position: absolute;
-    color: rgb(255, 105, 97);
+    color: ${({ theme }) => theme.main.color('light')};
     font-size: 0.8rem;
   `;
 }

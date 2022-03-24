@@ -5,6 +5,10 @@ export namespace LoginTooltipStyle {
     ${({ theme }) => theme.flexSet({ justify: 'space-between' })};
     font-size: 0.8rem;
 
+    a {
+      color: rgba(96, 154, 233);
+    }
+
     & a:hover {
       text-decoration: underline;
     }
