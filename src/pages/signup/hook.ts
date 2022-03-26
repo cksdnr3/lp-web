@@ -1,33 +1,46 @@
-import axios from 'axios';
-import { FormEvent, MouseEvent, useCallback, useState } from 'react';
+import { FormEvent, MouseEvent, useCallback, useEffect, useState } from 'react';
 import { useMutation } from 'react-query';
+import { useNavigate } from 'react-router-dom';
 import { authAPI } from 'src/apis/auth';
+import { RoutesUrl } from 'src/constants/routesUrl';
 import useInput from 'src/hooks/useInput';
+import { token } from 'src/utils/token';
 import { Validate } from 'src/utils/validate';
 
 export const useSignup = () => {
+  const navigate = useNavigate();
+
   const email = useInput('', Validate.email);
   const code = useInput('');
   const password = useInput('');
   const passwordCheck = useInput('');
 
-  const [isIdentified, setIsIdentified] = useState<boolean>(false);
-  const [formError, setFormError] = useState({
+  const [error, setError] = useState({
     isEmailError: false,
     isPasswordError: false,
     isPasswordCheckError: false,
   });
 
-  // const onSuccessIdentify = useCallback(() => {
-  //   setIsIdentified(true);
-  // }, []);
+  const signup = useMutation(() => authAPI.post.signup({ email: email.value, password: password.value }), {
+    onSuccess: () => navigate(RoutesUrl.LOGIN),
+  });
+
+  const identify = useMutation(
+    (event: MouseEvent<HTMLButtonElement>) => authAPI.post.emailIdentify({ email: email.value }),
+    {},
+  );
+
+  const verify = useMutation(
+    (event: MouseEvent<HTMLButtonElement>) => authAPI.post.codeVerify({ code: code.value, email: email.value }),
+    {},
+  );
 
   const onSubmit = useCallback(
-    (isVerified) => (event: FormEvent) => {
+    async (event: FormEvent) => {
       event.preventDefault();
 
-      if (!isVerified) {
-        setFormError({
+      if (!verify.data) {
+        setError({
           isEmailError: true,
           isPasswordError: false,
           isPasswordCheckError: false,
@@ -36,7 +49,7 @@ export const useSignup = () => {
       }
 
       if (!Validate.password(password.value)) {
-        setFormError({
+        setError({
           isEmailError: false,
           isPasswordError: true,
           isPasswordCheckError: false,
@@ -45,7 +58,7 @@ export const useSignup = () => {
       }
 
       if (!Validate.passwordCheck(passwordCheck.value, password.value)) {
-        setFormError({
+        setError({
           isEmailError: false,
           isPasswordError: false,
           isPasswordCheckError: true,
@@ -53,50 +66,28 @@ export const useSignup = () => {
         return;
       }
 
-      setFormError({
+      setError({
         isEmailError: false,
         isPasswordError: false,
         isPasswordCheckError: false,
       });
+
+      signup.mutate();
     },
-    [password.value, passwordCheck.value],
+    [password.value, passwordCheck.value, verify.data],
   );
 
-  const identify = useMutation({
-    mutationFn: (event: MouseEvent<HTMLButtonElement>) => {
-      // 이메일 코드 요청
-      authAPI.post.emailIdentify({ email: email.value });
-      return new Promise<string>((resolve, reject) => {
-        setTimeout(() => {
-          resolve('code');
-        }, 1000);
-      });
-    },
-    // onSuccess: onSuccessIdentify,
-  });
-
-  const verify = useMutation({
-    mutationFn: (event: MouseEvent<HTMLButtonElement>) => {
-      // 이메일 코드 전송
-      if (identify.data) {
-        authAPI.post.emailVerify({ code: identify.data, email: email.value });
-      }
-
-      return new Promise<boolean>((resolve, reject) => {
-        setTimeout(() => {
-          if (identify.data === code.value) {
-            resolve(true);
-          } else {
-            reject(false);
-          }
-        }, 1000);
-      });
-    },
-  });
+  const guardLoggedIn = useEffect(() => {
+    const accessToken = token.getAccessToken();
+    if (accessToken) {
+      navigate(-1);
+    }
+  }, [navigate]);
 
   return {
-    query: { verify, identify },
-    state: { formError, isIdentified },
+    query: { verify, identify, signup },
+    state: {},
+    error: error,
     input: { email, code, password, passwordCheck },
     event: { onSubmit },
   };

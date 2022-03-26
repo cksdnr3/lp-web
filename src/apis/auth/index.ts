@@ -1,5 +1,12 @@
 import axios, { AxiosPromise } from 'axios';
-import { IEmailIdentifyRequestBody, IEmailVerifyRequestBody, ILoginRequestBody } from './types';
+import {
+  IEmailIdentifyRequestBody,
+  IEmailVerifyRequestBody,
+  IKakaoLoginRequestBody,
+  IKakaoLoginResponseBody,
+  ILoginRequestBody,
+  ISignupRequestBody,
+} from './types';
 
 export namespace authAPI {
   export const get = {
@@ -12,9 +19,35 @@ export namespace authAPI {
     login(body: ILoginRequestBody): AxiosPromise<void> {
       return axios.post('/login', body);
     },
-    emailIdentify(body: IEmailIdentifyRequestBody) {
-      // return axios.post();
+    kakaoLogin(body: IKakaoLoginRequestBody) {
+      return new Promise<IKakaoLoginResponseBody>((resolve, reject) => {
+        resolve({ accessToken: '', refreshToken: 'rft' });
+      });
     },
-    emailVerify(body: IEmailVerifyRequestBody) {},
+    emailIdentify(body: IEmailIdentifyRequestBody) {
+      return new Promise<void>((resolve, reject) => {
+        setTimeout(() => {
+          resolve();
+        }, 1000);
+      });
+    },
+    codeVerify(body: IEmailVerifyRequestBody) {
+      return new Promise<boolean>((resolve, reject) => {
+        setTimeout(() => {
+          if ('code' === body.code) {
+            resolve(true);
+          } else {
+            reject(false);
+          }
+        }, 1000);
+      });
+    },
+    signup(body: ISignupRequestBody) {
+      return new Promise<void>((resolve, reject) => {
+        setTimeout(() => {
+          resolve();
+        }, 1000);
+      });
+    },
   };
 }

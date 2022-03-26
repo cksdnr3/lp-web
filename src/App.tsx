@@ -12,34 +12,15 @@ import Layout from './layout';
 import jwtDecode from 'jwt-decode';
 
 function App() {
-  // useQuery('/initialize', () => window.Kakao.isInitialized(), {
-  //   onSuccess: async (isInitialized) => {
-  //     if (!isInitialized) {
-  //       await window.Kakao.init(KakaoEnvironments.REST_API_KEY);
-  //       const accessToken = token.getAccessToken();
-  //       if (accessToken !== null) {
-  //         await window.Kakao.Auth.setAccessToken(accessToken);
-  //       }
-  //     }
-  //   },
-  //   onError: console.log,
-  // });
-  // useQuery('/me', () => window.Kakao.API.request({ url: KakaoEnvironments.api_url.ME }), {
-  //   onSuccess: (response) => {
-  //     console.log(response.kakao_account.profile);
-  //   },
-  //   onError: console.log,
-  // });
-
   const dispatch = useDispatch();
 
   useEffect(() => {
     const accessToken = token.getAccessToken();
 
-    if (accessToken) {
-      const decoded = jwtDecode<UserState>(accessToken);
-      dispatch(login({ name: decoded.name }));
-    }
+    // if (accessToken) {
+    //   const decoded = jwtDecode<UserState>(accessToken);
+    //   dispatch(login({ name: decoded.name }));
+    // }
   }, []);
 
   return (

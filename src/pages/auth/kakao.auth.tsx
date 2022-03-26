@@ -2,9 +2,10 @@ import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import qs from 'qs';
 import { KakaoEnvironments } from 'src/env/kakao/kakao.env';
-import { useQuery } from 'react-query';
+import { useMutation, useQuery } from 'react-query';
 import { token } from 'src/utils/token';
 import { useDispatch } from 'react-redux';
+import { authAPI } from 'src/apis/auth';
 
 function KakaoAuth() {
   const location = useLocation();
@@ -17,16 +18,13 @@ function KakaoAuth() {
 
   // 백엔드로 authizationCode 전송 -> LP APP JWT 코드 응답
 
-  // useQuery(['/kakaoToken'], () => KakaoAPI.post.kakaoToken({ authorizationCode: query.code as string }), {
-  //   onSuccess: (data) => {
-  //     token.setAccessToken(data.data.access_token);
-  //     token.setRefreshToken(data.data.refresh_token);
-  //     window.Kakao.cleanup();
-  //     window.Kakao.init(KakaoEnvironments.REST_API_KEY);
-  //     window.Kakao.Auth.setAccessToken(data.data.access_token);
-  //     navigate('/');
-  //   },
-  // });
+  useQuery('/kakao_login', () => authAPI.post.kakaoLogin({ authorizationCode: query.code as string }), {
+    onSuccess: (data) => {
+      token.setAccessToken(data.accessToken);
+      token.setRefreshToken(data.refreshToken);
+    },
+  });
+
   return <></>;
 }
 

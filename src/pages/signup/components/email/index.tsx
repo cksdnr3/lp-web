@@ -7,19 +7,19 @@ import { useSignup } from '../../hook';
 
 type EmailSignupProps = ReturnType<typeof useSignup>;
 
-function EmailSignup({ state, input, event, query }: EmailSignupProps) {
-  const buttonStyle = useMemo<CSSProperties>(() => ({ width: 53, padding: '6px 8px', fontSize: 12 }), []);
+function EmailSignup({ input, event, query, error }: EmailSignupProps) {
+  const buttonStyle = useMemo<CSSProperties>(() => ({ width: 53, padding: '8px 8px', fontSize: 12 }), []);
 
   return (
     <Form
-      onSubmit={event.onSubmit(query.verify.data)}
+      onSubmit={event.onSubmit}
       style={{ marginBottom: 20 }}
       header={<h1 style={{ fontSize: 24 }}>본인 정보를 입력해주세요</h1>}
       content={[
         <Input
           disabled={query.identify.isSuccess}
           label="이메일"
-          isError={state.formError.isEmailError}
+          isError={error.isEmailError}
           errorMsg="이메일 인증을 진행해주세요."
           button={
             <Button
@@ -36,7 +36,7 @@ function EmailSignup({ state, input, event, query }: EmailSignupProps) {
           <Input
             disabled={query.verify.data}
             placeholder="전송된 코드를 입력해주세요."
-            isError={!query.verify.isSuccess}
+            isError={query.verify.isError}
             errorMsg="전송된 코드를 확인하고 다시 입력해주세요."
             button={
               <Button
@@ -53,19 +53,19 @@ function EmailSignup({ state, input, event, query }: EmailSignupProps) {
         <Input
           type="password"
           label="비밀번호"
-          isError={state.formError.isPasswordError}
+          isError={error.isPasswordError}
           errorMsg="비밀번호를 입력해주세요. (영문 숫자 8 ~ 30자)"
           {...input.password}
         />,
         <Input
           type="password"
           label="비밀번호 확인"
-          isError={state.formError.isPasswordCheckError}
+          isError={error.isPasswordCheckError}
           errorMsg="비밀번호가 일치하지 않습니다."
           {...input.passwordCheck}
         />,
       ]}
-      footer={<Button text="회원가입" style={{ fontSize: 18 }} />}
+      footer={<Button text="회원가입" style={{ fontSize: 18 }} isLoading={query.signup.isLoading} />}
     />
   );
 }
