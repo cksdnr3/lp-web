@@ -3,20 +3,22 @@ import { RootState } from 'src/store';
 
 export interface UserState {
   name: string;
-  profileImage: string;
 }
 
 const initialState: UserState = {
   name: '',
-  profileImage: '',
-} as const;
+};
 
 export const userSlice = createSlice({
   name: 'user',
   initialState,
-  reducers: {},
+  reducers: {
+    login(state, { payload }: PayloadAction<UserState>) {
+      state.name = payload.name;
+    },
+  },
 });
 
-export const {} = userSlice.actions;
+export const { login } = userSlice.actions;
 export const selectUser = (state: RootState) => state.user;
 export default userSlice.reducer;

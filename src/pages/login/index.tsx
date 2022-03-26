@@ -13,7 +13,7 @@ function Login() {
         <EmailLogin {...useLogin()} />
         <LoginTooltip />
         <Divider />
-        <SocialsLogin />
+        <SocialsLogin types={['kakao', 'google', 'naver']} />
       </LoginStyles.Container>
     </LoginStyles.Wrapper>
   );

@@ -2,6 +2,6 @@ export namespace RoutesUrl {
   export const HOME = '/';
   export const LOGIN = '/login';
   export const SIGNUP = '/signup';
-  export const AUTH_CALLBACK = '/auth/callback';
+  export const KAKAO_AUTH = '/oauth2/kakao';
   export const MYPAGE = '/mypage';
 }

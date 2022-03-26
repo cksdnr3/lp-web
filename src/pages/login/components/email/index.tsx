@@ -1,24 +1,13 @@
-import React, { FormEvent, Dispatch } from 'react';
+import React from 'react';
 import Button from 'src/components/button';
 import Form from 'src/components/form';
 import Input from 'src/components/input';
+import useLogin from '../../hook';
 import { EmailLoginStyle } from './styles';
 
-interface IEmailLoginProps {
-  state: {
-    email: readonly [string, Dispatch<string>];
-    password: readonly [string, Dispatch<string>];
-  };
-  event: {
-    onSubmit: (event: FormEvent) => void;
-    onChangeEmail: (event: React.ChangeEvent<HTMLInputElement>) => void;
-    onChangePassword: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  };
-}
+type EamilLoginProps = ReturnType<typeof useLogin>;
 
-function EmailLogin({ state, event }: IEmailLoginProps) {
-  const [email, setEmail] = state.email;
-  const [password, setPassword] = state.password;
+function EmailLogin({ input, event }: EamilLoginProps) {
   return (
     <Form
       onSubmit={event.onSubmit}
@@ -32,15 +21,8 @@ function EmailLogin({ state, event }: IEmailLoginProps) {
         </div>
       }
       content={[
-        <Input key={0} value={email} setValue={setEmail} onChange={event.onChangeEmail} label="이메일" />,
-        <Input
-          key={1}
-          value={password}
-          onChange={event.onChangePassword}
-          setValue={setPassword}
-          label="비밀번호"
-          type="password"
-        />,
+        <Input label="이메일" {...input.email} />,
+        <Input label="비밀번호" type="password" {...input.passowrd} />,
       ]}
       footer={<Button text="로그인" />}
     />

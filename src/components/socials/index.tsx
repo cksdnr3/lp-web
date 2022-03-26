@@ -1,44 +1,65 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { KakaoEnvironments } from 'src/env/kakao/kakao.env';
 import { SocialsStyle } from './styles';
 
-function Socials() {
+type Social = 'kakao' | 'naver' | 'google';
+interface ISocialsProps {
+  types: (Social | undefined)[];
+}
+
+function Socials({ types }: ISocialsProps) {
+  const socials = useMemo<({ style: any; href: string } | undefined)[]>(() => {
+    return types.map((type) => {
+      const defaultStyle = {
+        width: 40,
+        height: 40,
+        borderRadius: 5,
+        backgroundRepeat: 'no-repeat',
+        backgroundPosition: 'center',
+      };
+
+      switch (type) {
+        case 'kakao': {
+          return {
+            style: {
+              ...defaultStyle,
+              backgroundColor: '#ffcd00',
+              backgroundImage: "url('https://statics.goorm.io/images/social/logo/kakaoLogo.svg')",
+            },
+            href: `https://${KakaoEnvironments.HOST}/oauth/authorize?client_id=${KakaoEnvironments.REST_API_KEY}&redirect_uri=${KakaoEnvironments.REDIRECT_URI}&response_type=code`,
+          };
+        }
+        case 'naver': {
+          return {
+            style: {
+              ...defaultStyle,
+              backgroundColor: '#1dc800',
+              backgroundImage: "url('https://statics.goorm.io/images/social/logo/naverLogo.svg')",
+            },
+            href: ``,
+          };
+        }
+        case 'google': {
+          return {
+            style: {
+              ...defaultStyle,
+              backgroundColor: '#fafafa',
+              backgroundImage: "url('https://statics.goorm.io/images/social/logo/googleLogo.svg')",
+            },
+            href: ``,
+          };
+        }
+        default: {
+          return;
+        }
+      }
+    });
+  }, [types]);
   return (
     <SocialsStyle.Wrapper>
-      <a
-        style={{
-          width: 40,
-          height: 40,
-          borderRadius: 5,
-          backgroundColor: '#ffcd00',
-          backgroundImage: "url('https://statics.goorm.io/images/social/logo/kakaoLogo.svg')",
-          backgroundRepeat: 'no-repeat',
-          backgroundPosition: 'center',
-        }}
-        href={`https://${KakaoEnvironments.HOST}/oauth/authorize?client_id=${KakaoEnvironments.REST_API_KEY}&redirect_uri=${KakaoEnvironments.REDIRECT_URI}&response_type=code`}
-      />
-      <a
-        style={{
-          width: 40,
-          height: 40,
-          borderRadius: 5,
-          backgroundColor: '#1dc800',
-          backgroundImage: "url('https://statics.goorm.io/images/social/logo/naverLogo.svg')",
-          backgroundRepeat: 'no-repeat',
-          backgroundPosition: 'center',
-        }}
-      />
-      <a
-        style={{
-          width: 40,
-          height: 40,
-          borderRadius: 5,
-          backgroundColor: '#fafafa',
-          backgroundImage: "url('https://statics.goorm.io/images/social/logo/googleLogo.svg')",
-          backgroundRepeat: 'no-repeat',
-          backgroundPosition: 'center',
-        }}
-      />
+      {socials.map((social) => (
+        <>{social && <a style={social.style} href={social.href} />}</>
+      ))}
     </SocialsStyle.Wrapper>
   );
 }

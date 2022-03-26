@@ -7,10 +7,10 @@ import useInput from 'src/hooks/useInput';
 function useLogin() {
   const navigate = useNavigate();
 
-  const { value: email, setValue: setEmail, onChange: onChangeEmail } = useInput('');
-  const { value: password, setValue: setPassword, onChange: onChangePassword } = useInput('');
+  const email = useInput('');
+  const passowrd = useInput('');
 
-  const { mutate } = useMutation(() => authAPI.post.login({ email, password }), {
+  const { mutate } = useMutation(() => authAPI.post.login({ email: email.value, password: passowrd.value }), {
     onSuccess() {
       navigate('/');
     },
@@ -25,8 +25,8 @@ function useLogin() {
   );
 
   return {
-    state: { email: [email, setEmail] as const, password: [password, setPassword] as const },
-    event: { onSubmit, onChangeEmail, onChangePassword },
+    input: { email, passowrd },
+    event: { onSubmit },
   };
 }
 

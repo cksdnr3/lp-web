@@ -8,8 +8,8 @@ export namespace ButtonStyle {
     background-color: ${({ theme }) => theme.main.color()};
     text-align: center;
     font-weight: 600;
-    font-size: 1.125rem;
-    color: #fff;
+    font-size: 14px;
+    color: rgb(${({ theme }) => theme.palette.white[100]});
     cursor: pointer;
     transition: background 0.25s;
 
@@ -18,7 +18,7 @@ export namespace ButtonStyle {
     }
 
     &:disabled {
-      background-color: ${({ theme }) => theme.main.color('dark', 0.5)};
+      background-color: rgb(${({ theme }) => theme.palette.white[300]}, 0.6);
       cursor: not-allowed;
     }
 

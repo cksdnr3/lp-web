@@ -2,7 +2,8 @@ import styled from 'styled-components';
 
 export namespace EmailStyle {
   export const Button = styled.button`
-    padding: 6px 12px;
+    width: 52px;
+    padding: 6px 8px;
     border-radius: 5px;
     background: rgb(216, 12, 24);
     font-weight: 600;

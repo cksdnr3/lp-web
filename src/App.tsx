@@ -1,20 +1,17 @@
-import React, { useEffect, useState } from 'react';
-import { Navigate, Outlet, Route, Routes } from 'react-router-dom';
-import Auth from './pages/auth';
+import React, { useEffect } from 'react';
+import { Route, Routes } from 'react-router-dom';
+import KakaoAuth from './pages/auth/kakao.auth';
 import Login from './pages/login';
 import Signup from './pages/signup';
 import { RoutesUrl } from 'src/constants/routesUrl';
 import Home from './pages/home';
-import { KakaoEnvironments } from './env/kakao/kakao.env';
 import { token } from './utils/token';
-import { useQuery } from 'react-query';
-import { useSelector } from 'react-redux';
-import { selectUser } from './features/user/userSlice';
-import Detail from './pages/detail';
+import { useDispatch } from 'react-redux';
+import { login, UserState } from './features/user/userSlice';
 import Layout from './layout';
+import jwtDecode from 'jwt-decode';
 
 function App() {
-  // const { loginType } = useSelector(selectUser);
   // useQuery('/initialize', () => window.Kakao.isInitialized(), {
   //   onSuccess: async (isInitialized) => {
   //     if (!isInitialized) {
@@ -34,15 +31,25 @@ function App() {
   //   onError: console.log,
   // });
 
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const accessToken = token.getAccessToken();
+
+    if (accessToken) {
+      const decoded = jwtDecode<UserState>(accessToken);
+      dispatch(login({ name: decoded.name }));
+    }
+  }, []);
+
   return (
     <Routes>
       <Route path={RoutesUrl.HOME} element={<Layout />}>
         <Route path={RoutesUrl.HOME} element={<Home />} />
-        <Route path="/detail" element={<Detail />} />
       </Route>
       <Route path={RoutesUrl.LOGIN} element={<Login />} />
       <Route path={RoutesUrl.SIGNUP} element={<Signup />} />
-      <Route path={RoutesUrl.AUTH_CALLBACK} element={<Auth />} />
+      <Route path={RoutesUrl.KAKAO_AUTH} element={<KakaoAuth />} />
     </Routes>
   );
 }

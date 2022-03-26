@@ -1,7 +1,4 @@
-import React, { useEffect, useState } from 'react';
-import { useQuery } from 'react-query';
-import { Outlet, useNavigate } from 'react-router-dom';
-import { KakaoEnvironments } from 'src/env/kakao/kakao.env';
+import React from 'react';
 
 function Home() {
   return (
