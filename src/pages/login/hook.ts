@@ -3,6 +3,7 @@ import { useMutation } from 'react-query';
 import { useNavigate } from 'react-router-dom';
 import { authAPI } from 'src/apis/auth';
 import useInput from 'src/hooks/useInput';
+import { token } from 'src/utils/token';
 import { Validate } from 'src/utils/validate';
 
 function useLogin() {
@@ -12,7 +13,8 @@ function useLogin() {
   const password = useInput('');
 
   const login = useMutation(() => authAPI.post.login({ email: email.value, password: password.value }), {
-    onSuccess() {
+    onSuccess({ data }) {
+      token.setAccessToken(data.accessToken);
       navigate('/');
     },
   });
@@ -26,21 +28,26 @@ function useLogin() {
     async (event: FormEvent) => {
       event.preventDefault();
 
-      if (!Validate.nill(email.value)) {
-        setError({
-          isEmailError: false,
-          isPasswordError: true,
-        });
-        return;
-      }
+      // if (!Validate.nill(email.value)) {
+      //   setError({
+      //     isEmailError: false,
+      //     isPasswordError: true,
+      //   });
+      //   return;
+      // }
+      console.log(password.value);
+      // if (!Validate.nill(password.value)) {
+      //   setError({
+      //     isEmailError: false,
+      //     isPasswordError: true,
+      //   });
+      //   return;
+      // }
 
-      if (!Validate.nill(password.value)) {
-        setError({
-          isEmailError: false,
-          isPasswordError: true,
-        });
-        return;
-      }
+      // setError({
+      //   isEmailError: false,
+      //   isPasswordError: false,
+      // });
 
       login.mutate();
     },

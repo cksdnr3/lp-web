@@ -1,10 +1,12 @@
 import axios, { AxiosPromise } from 'axios';
+import { RoutesUrl } from 'src/constants/routesUrl';
 import {
   IEmailIdentifyRequestBody,
   IEmailVerifyRequestBody,
   IKakaoLoginRequestBody,
   IKakaoLoginResponseBody,
   ILoginRequestBody,
+  ILoginResponseBody,
   ISignupRequestBody,
 } from './types';
 
@@ -16,38 +18,20 @@ export namespace authAPI {
   };
 
   export const post = {
-    login(body: ILoginRequestBody): AxiosPromise<void> {
+    login(body: ILoginRequestBody): AxiosPromise<ILoginResponseBody> {
       return axios.post('/login', body);
     },
-    kakaoLogin(body: IKakaoLoginRequestBody) {
-      return new Promise<IKakaoLoginResponseBody>((resolve, reject) => {
-        resolve({ accessToken: '', refreshToken: 'rft' });
-      });
+    kakaoLogin(body: IKakaoLoginRequestBody): AxiosPromise<IKakaoLoginResponseBody> {
+      return axios.get(`${RoutesUrl.KAKAO_AUTH}`, { params: { code: body.authorizationCode } });
     },
     emailIdentify(body: IEmailIdentifyRequestBody) {
-      return new Promise<void>((resolve, reject) => {
-        setTimeout(() => {
-          resolve();
-        }, 1000);
-      });
+      return axios.post('/auth/email', body);
     },
-    codeVerify(body: IEmailVerifyRequestBody) {
-      return new Promise<boolean>((resolve, reject) => {
-        setTimeout(() => {
-          if ('code' === body.code) {
-            resolve(true);
-          } else {
-            reject(false);
-          }
-        }, 1000);
-      });
+    emailConfirm(body: IEmailVerifyRequestBody) {
+      return axios.post('/auth/email/confirm', body);
     },
-    signup(body: ISignupRequestBody) {
-      return new Promise<void>((resolve, reject) => {
-        setTimeout(() => {
-          resolve();
-        }, 1000);
-      });
+    create(body: ISignupRequestBody) {
+      return axios.post('/auth/create', body);
     },
   };
 }

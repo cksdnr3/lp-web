@@ -17,10 +17,11 @@ function App() {
   useEffect(() => {
     const accessToken = token.getAccessToken();
 
-    // if (accessToken) {
-    //   const decoded = jwtDecode<UserState>(accessToken);
-    //   dispatch(login({ name: decoded.name }));
-    // }
+    if (accessToken) {
+      const decoded = jwtDecode<UserState>(accessToken);
+      console.log(decoded);
+      dispatch(login({ name: decoded.name }));
+    }
   }, []);
 
   return (

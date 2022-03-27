@@ -21,7 +21,7 @@ export const useSignup = () => {
     isPasswordCheckError: false,
   });
 
-  const signup = useMutation(() => authAPI.post.signup({ email: email.value, password: password.value }), {
+  const signup = useMutation(() => authAPI.post.create({ email: email.value, password: password.value }), {
     onSuccess: () => navigate(RoutesUrl.LOGIN),
   });
 
@@ -31,7 +31,7 @@ export const useSignup = () => {
   );
 
   const verify = useMutation(
-    (event: MouseEvent<HTMLButtonElement>) => authAPI.post.codeVerify({ code: code.value, email: email.value }),
+    (event: MouseEvent<HTMLButtonElement>) => authAPI.post.emailConfirm({ code: code.value, email: email.value }),
     {},
   );
 
@@ -76,13 +76,6 @@ export const useSignup = () => {
     },
     [password.value, passwordCheck.value, verify.data],
   );
-
-  const guardLoggedIn = useEffect(() => {
-    const accessToken = token.getAccessToken();
-    if (accessToken) {
-      navigate(-1);
-    }
-  }, [navigate]);
 
   return {
     query: { verify, identify, signup },

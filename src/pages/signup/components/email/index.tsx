@@ -27,14 +27,14 @@ function EmailSignup({ input, event, query, error }: EmailSignupProps) {
               text={query.identify.isLoading ? <LoadingOutlined /> : query.identify.isSuccess ? '재전송' : '인증'}
               style={buttonStyle}
               onClick={query.identify.mutate}
-              disabled={query.verify.data || !input.email.isValid}
+              disabled={query.verify.isSuccess || !input.email.isValid}
             />
           }
           {...input.email}
         />,
         query.identify.isSuccess ? (
           <Input
-            disabled={query.verify.data}
+            disabled={query.verify.isSuccess}
             placeholder="전송된 코드를 입력해주세요."
             isError={query.verify.isError}
             errorMsg="전송된 코드를 확인하고 다시 입력해주세요."
@@ -44,7 +44,7 @@ function EmailSignup({ input, event, query, error }: EmailSignupProps) {
                 text={query.verify.isLoading ? <LoadingOutlined /> : '확인'}
                 style={buttonStyle}
                 onClick={query.verify.mutate}
-                disabled={query.verify.data}
+                disabled={query.verify.isSuccess}
               />
             }
             {...input.code}

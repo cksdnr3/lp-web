@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { useMemo } from 'react';
 import { KakaoEnvironments } from 'src/env/kakao/kakao.env';
 import { SocialsStyle } from './styles';

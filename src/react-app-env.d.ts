@@ -6,6 +6,8 @@ interface Window {
     cleanup: () => Promise<void>;
     Auth: {
       setAccessToken: (token: string) => Promise<void>;
+      login: ({ success: any, fail: any, persistAccessToken: boolean }) => void;
+      authorize: any;
     };
     API: {
       request: (params: {
