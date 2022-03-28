@@ -144,6 +144,8 @@ export const GlobalStyle = createGlobalStyle`
     border: none;
     outline: none;
     appearance: none;
+    background-color: inherit;
+    cursor: pointer;
   }
   a {
     color: black;

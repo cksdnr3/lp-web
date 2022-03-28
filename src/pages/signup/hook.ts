@@ -1,5 +1,5 @@
 import { FormEvent, MouseEvent, useCallback, useEffect, useState } from 'react';
-import { useMutation } from 'react-query';
+import { useMutation, useQuery } from 'react-query';
 import { useNavigate } from 'react-router-dom';
 import { authAPI } from 'src/apis/auth';
 import { RoutesUrl } from 'src/constants/routesUrl';
@@ -30,7 +30,7 @@ export const useSignup = () => {
     {},
   );
 
-  const verify = useMutation(
+  const confirm = useMutation(
     (event: MouseEvent<HTMLButtonElement>) => authAPI.post.emailConfirm({ code: code.value, email: email.value }),
     {},
   );
@@ -39,7 +39,7 @@ export const useSignup = () => {
     async (event: FormEvent) => {
       event.preventDefault();
 
-      if (!verify.data) {
+      if (!confirm.data) {
         setError({
           isEmailError: true,
           isPasswordError: false,
@@ -74,11 +74,11 @@ export const useSignup = () => {
 
       signup.mutate();
     },
-    [password.value, passwordCheck.value, verify.data],
+    [password.value, passwordCheck.value, confirm.data],
   );
 
   return {
-    query: { verify, identify, signup },
+    query: { confirm, identify, signup },
     state: {},
     error: error,
     input: { email, code, password, passwordCheck },

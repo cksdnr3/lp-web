@@ -4,4 +4,6 @@ export namespace RoutesUrl {
   export const SIGNUP = '/signup';
   export const KAKAO_AUTH = '/auth/kakao';
   export const MYPAGE = '/mypage';
+  export const PRODUCTS_NEW = '/products/new';
+  export const TALK = '/talk';
 }

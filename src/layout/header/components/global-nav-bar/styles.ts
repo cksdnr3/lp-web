@@ -18,7 +18,7 @@ export namespace GlobalNavBarStyle {
   export const Top = styled.div`
     ${({ theme }) => theme.flexSet({ align: 'center', justify: 'space-between' })};
     width: 100%;
-    max-width: 1200px;
+    max-width: 1024px;
     margin: 0 auto;
 
     ${({ theme }) => theme.media.medium`
@@ -32,7 +32,7 @@ export namespace GlobalNavBarStyle {
   export const Bottom = styled.div`
     position: relative;
     padding: 10px 0;
-    max-width: 1200px;
+    max-width: 1024px;
     margin: 0 auto;
 
     ${({ theme }) => theme.media.medium`

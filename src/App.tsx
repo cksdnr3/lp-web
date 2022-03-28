@@ -7,9 +7,12 @@ import { RoutesUrl } from 'src/constants/routesUrl';
 import Home from './pages/home';
 import { token } from './utils/token';
 import { useDispatch } from 'react-redux';
-import { login, UserState } from './features/user/userSlice';
+import { userActions, UserState } from './features/user/userSlice';
 import Layout from './layout';
 import jwtDecode from 'jwt-decode';
+import MyPage from './pages/my-page';
+import ProductsNew from './pages/products-new';
+import Talk from './pages/talk';
 
 function App() {
   const dispatch = useDispatch();
@@ -20,7 +23,7 @@ function App() {
     if (accessToken) {
       const decoded = jwtDecode<UserState>(accessToken);
       console.log(decoded);
-      dispatch(login({ name: decoded.name }));
+      dispatch(userActions.login(decoded));
     }
   }, []);
 
@@ -28,6 +31,9 @@ function App() {
     <Routes>
       <Route path={RoutesUrl.HOME} element={<Layout />}>
         <Route path={RoutesUrl.HOME} element={<Home />} />
+        <Route path={RoutesUrl.MYPAGE} element={<MyPage />} />
+        <Route path={RoutesUrl.PRODUCTS_NEW} element={<ProductsNew />} />
+        <Route path={RoutesUrl.TALK} element={<Talk />} />
       </Route>
       <Route path={RoutesUrl.LOGIN} element={<Login />} />
       <Route path={RoutesUrl.SIGNUP} element={<Signup />} />

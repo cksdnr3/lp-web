@@ -1,6 +1,6 @@
 import { DefaultTheme } from 'styled-components';
 import { flexSet } from 'src/styles/theme/flexSet';
-import { media } from './media';
+import { media, sizes } from './media';
 import { main } from './main';
 import { palette } from './palette';
 
@@ -9,4 +9,5 @@ export const theme: DefaultTheme = {
   media,
   main,
   palette,
+  sizes,
 };

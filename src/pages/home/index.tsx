@@ -1,12 +1,18 @@
 import React from 'react';
+import Banner from './components/banner';
+import Contents from './components/contents';
+import { HomeStyle } from './styles';
 
 function Home() {
   return (
-    <div>
-      <div style={{ height: '300vh' }}>
-        <div>dfsadlfsa;ldkfjsal;kf</div>
-      </div>
-    </div>
+    <HomeStyle.Wrapper>
+      <HomeStyle.Section>
+        <Banner />
+      </HomeStyle.Section>
+      <HomeStyle.Section>
+        <Contents />
+      </HomeStyle.Section>
+    </HomeStyle.Wrapper>
   );
 }
 

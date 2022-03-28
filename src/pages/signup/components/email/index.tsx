@@ -27,24 +27,24 @@ function EmailSignup({ input, event, query, error }: EmailSignupProps) {
               text={query.identify.isLoading ? <LoadingOutlined /> : query.identify.isSuccess ? '재전송' : '인증'}
               style={buttonStyle}
               onClick={query.identify.mutate}
-              disabled={query.verify.isSuccess || !input.email.isValid}
+              disabled={query.confirm.isSuccess || !input.email.isValid}
             />
           }
           {...input.email}
         />,
         query.identify.isSuccess ? (
           <Input
-            disabled={query.verify.isSuccess}
+            disabled={query.confirm.isSuccess}
             placeholder="전송된 코드를 입력해주세요."
-            isError={query.verify.isError}
+            isError={query.confirm.isError}
             errorMsg="전송된 코드를 확인하고 다시 입력해주세요."
             button={
               <Button
                 type="button"
-                text={query.verify.isLoading ? <LoadingOutlined /> : '확인'}
+                text={query.confirm.isLoading ? <LoadingOutlined /> : '확인'}
                 style={buttonStyle}
-                onClick={query.verify.mutate}
-                disabled={query.verify.isSuccess}
+                onClick={query.confirm.mutate}
+                disabled={query.confirm.isSuccess}
               />
             }
             {...input.code}

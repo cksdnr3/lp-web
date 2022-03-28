@@ -22,4 +22,9 @@ export const token = {
   setRefreshToken(token: string): void {
     localStorage.setItem(REFRESH_TOKEN, token);
   },
+
+  removeToken() {
+    localStorage.removeItem(ACCESS_TOKEN);
+    localStorage.removeItem(REFRESH_TOKEN);
+  },
 };

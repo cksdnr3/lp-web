@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 export namespace GnbTooltipsStyle {
@@ -8,7 +9,7 @@ export namespace GnbTooltipsStyle {
     display: none;
     `}
   `;
-  export const Tolltip = styled.div`
+  export const Tolltip = styled(Link)`
     ${({ theme }) => theme.flexSet({ align: 'center' })};
     font-size: 14px;
     cursor: pointer;

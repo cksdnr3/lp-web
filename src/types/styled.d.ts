@@ -9,5 +9,6 @@ declare module 'styled-components' {
     media: Record<Device, any>;
     main: Main;
     palette: Recrod<Palette, Brightness>;
+    sizes: Record<Device, number>;
   }
 }

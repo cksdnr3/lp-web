@@ -17,13 +17,14 @@ export namespace LogoStyle {
   `;
 
   export const Wrapper = styled.div<{ size: 'small' | 'medium' | 'large' }>`
-    ${({ size }) => {
-      if (size === 'small') return small;
-      if (size === 'large') return large;
-      return medium;
-    }}
-    font-style: italic;
-    cursor: pointer;
-    color: ${({ theme }) => theme.main.color()};
+    a {
+      ${({ size }) => {
+        if (size === 'small') return small;
+        if (size === 'large') return large;
+        return medium;
+      }}
+      font-style: italic;
+      color: ${({ theme }) => theme.main.color()};
+    }
   `;
 }

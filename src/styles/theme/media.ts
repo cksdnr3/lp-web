@@ -2,8 +2,8 @@ import { css, CSSObject, SimpleInterpolation } from 'styled-components';
 
 export type Device = 'small' | 'medium' | 'large';
 
-const sizes: Record<Device, number> = {
-  large: 1200,
+export const sizes: Record<Device, number> = {
+  large: 1024,
   medium: 768,
   small: 600,
 };

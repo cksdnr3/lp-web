@@ -7,6 +7,7 @@ import {
   IKakaoLoginResponseBody,
   ILoginRequestBody,
   ILoginResponseBody,
+  ILogoutRequestBody,
   ISignupRequestBody,
 } from './types';
 
@@ -24,14 +25,19 @@ export namespace authAPI {
     kakaoLogin(body: IKakaoLoginRequestBody): AxiosPromise<IKakaoLoginResponseBody> {
       return axios.get(`${RoutesUrl.KAKAO_AUTH}`, { params: { code: body.authorizationCode } });
     },
-    emailIdentify(body: IEmailIdentifyRequestBody) {
+    emailIdentify(body: IEmailIdentifyRequestBody): AxiosPromise<void> {
       return axios.post('/auth/email', body);
     },
-    emailConfirm(body: IEmailVerifyRequestBody) {
+    emailConfirm(body: IEmailVerifyRequestBody): AxiosPromise<void> {
       return axios.post('/auth/email/confirm', body);
     },
     create(body: ISignupRequestBody) {
       return axios.post('/auth/create', body);
+    },
+    logout(body: ILogoutRequestBody) {
+      return new Promise<void>((resolve, reject) => {
+        resolve();
+      });
     },
   };
 }

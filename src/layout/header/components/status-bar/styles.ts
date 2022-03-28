@@ -3,7 +3,9 @@ import styled from 'styled-components';
 export namespace StatusBarStyle {
   export const Wrapper = styled.div`
     border-bottom: 1px solid rgb(${({ theme }) => theme.palette.white[300]});
-    font-size: 12px;
+    * {
+      font-size: 12px;
+    }
   `;
   export const Container = styled.div`
     ${({ theme }) => theme.flexSet({ align: 'center', justify: 'space-between' })};
@@ -17,13 +19,15 @@ export namespace StatusBarStyle {
   `;
 
   export const Status = styled.div`
-    ${({ theme }) => theme.flexSet({})};
-    & > *:not(:first-of-type) {
+    ${({ theme }) => theme.flexSet({ align: 'center' })};
+    & > *:not(:first-child) {
       margin-left: 25px;
     }
 
-    a:hover {
+    *:hover {
       color: rgba(96, 154, 233);
     }
   `;
+
+  export const Button = styled.button``;
 }

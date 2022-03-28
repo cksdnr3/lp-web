@@ -31,3 +31,5 @@ export interface IKakaoLoginRequestBody {
 }
 
 export interface IKakaoLoginResponseBody extends LoginResponse {}
+
+export interface ILogoutRequestBody {}
