@@ -4,8 +4,8 @@ export type Device = 'small' | 'medium' | 'large';
 
 export const sizes: Record<Device, number> = {
   large: 1024,
-  medium: 768,
-  small: 600,
+  medium: 915,
+  small: 450,
 };
 
 export const media = Object.entries(sizes).reduce((acc, [device, size]) => {

@@ -1,7 +1,7 @@
 import { FormEvent, useCallback, useState } from 'react';
 import { useMutation } from 'react-query';
 import { useNavigate } from 'react-router-dom';
-import { authAPI } from 'src/apis/auth';
+import { AuthApi } from 'src/apis/auth';
 import useInput from 'src/hooks/useInput';
 import { token } from 'src/utils/token';
 import { Validate } from 'src/utils/validate';
@@ -12,7 +12,7 @@ function useLogin() {
   const email = useInput('');
   const password = useInput('');
 
-  const login = useMutation(() => authAPI.post.login({ email: email.value, password: password.value }), {
+  const login = useMutation(() => AuthApi.post.login({ email: email.value, password: password.value }), {
     onSuccess({ data }) {
       token.setAccessToken(data.accessToken);
       navigate('/');
@@ -35,7 +35,6 @@ function useLogin() {
       //   });
       //   return;
       // }
-      console.log(password.value);
       // if (!Validate.nill(password.value)) {
       //   setError({
       //     isEmailError: false,

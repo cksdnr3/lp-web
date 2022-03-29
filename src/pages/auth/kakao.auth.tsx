@@ -5,9 +5,9 @@ import { KakaoEnvironments } from 'src/env/kakao/kakao.env';
 import { useMutation, useQuery } from 'react-query';
 import { token } from 'src/utils/token';
 import { useDispatch } from 'react-redux';
-import { authAPI } from 'src/apis/auth';
+import { AuthApi } from 'src/apis/auth';
 import { RoutesUrl } from 'src/constants/routesUrl';
-import { userActions, UserState } from 'src/features/user/userSlice';
+import { userActions, UserState } from 'src/features/user/user.slice';
 import jwtDecode from 'jwt-decode';
 
 function KakaoAuth() {
@@ -17,7 +17,7 @@ function KakaoAuth() {
 
   const query = qs.parse(location.search, { ignoreQueryPrefix: true });
 
-  useQuery('/kakao_login', () => authAPI.post.kakaoLogin({ authorizationCode: query.code as string }), {
+  useQuery('/kakao_login', () => AuthApi.post.kakaoLogin({ authorizationCode: query.code as string }), {
     onSuccess: ({ data }) => {
       token.setAccessToken(data.accessToken);
       const decoded = jwtDecode<UserState>(data.accessToken);

@@ -1,9 +1,10 @@
-import { DownloadOutlined, MobileOutlined, StarTwoTone } from '@ant-design/icons';
+import { DownloadOutlined, MobileOutlined, StarFilled, StarTwoTone } from '@ant-design/icons';
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { RoutesUrl } from 'src/constants/routesUrl';
-import { selectUser } from 'src/features/user/userSlice';
+import { selectDevice } from 'src/features/device/device.slice';
+import { selectUser } from 'src/features/user/user.slice';
 import { useHeader } from '../../hook';
 import { StatusBarStyle } from './styles';
 
@@ -18,7 +19,7 @@ function StatusBar({ query, state }: StatusBarProps) {
             <DownloadOutlined /> 앱 다운로드
           </StatusBarStyle.Button>
           <StatusBarStyle.Button>
-            <StarTwoTone /> 즐겨찾기
+            <StarTwoTone twoToneColor={'#ffcd00'} /> 즐겨찾기
           </StatusBarStyle.Button>
         </StatusBarStyle.Status>
         <StatusBarStyle.Status>

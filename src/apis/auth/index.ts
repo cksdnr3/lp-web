@@ -11,7 +11,7 @@ import {
   ISignupRequestBody,
 } from './types';
 
-export namespace authAPI {
+export namespace AuthApi {
   export const get = {
     login(params: { code: string }) {
       return axios.get('/login', { params });

@@ -7,6 +7,10 @@ export namespace LoginStyles {
     ${({ theme }) => theme.media.medium`
     padding: 0;
     `}
+
+    ${({ theme }) => theme.media.small`
+    padding: 0;
+    `}
   `;
 
   export const Container = styled.div`
@@ -23,6 +27,12 @@ export namespace LoginStyles {
     }
 
     ${({ theme }) => theme.media.medium`
+    height: 100vh;
+    padding: 30px;
+    justify-content: center;
+    `}
+
+    ${({ theme }) => theme.media.small`
     height: 100vh;
     padding: 30px;
     justify-content: center;

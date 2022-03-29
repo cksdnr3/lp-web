@@ -5,7 +5,7 @@ import SignupTooltip from './components/tooltip';
 import { SignupStyle } from './styles';
 import { useSignup } from './hook';
 import { useSelector } from 'react-redux';
-import { selectUser } from 'src/features/user/userSlice';
+import { selectUser } from 'src/features/user/user.slice';
 import { useNavigate } from 'react-router-dom';
 
 function Signup() {

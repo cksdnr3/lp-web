@@ -9,10 +9,16 @@ export namespace StatusBarStyle {
   `;
   export const Container = styled.div`
     ${({ theme }) => theme.flexSet({ align: 'center', justify: 'space-between' })};
-    max-width: 1200px;
+    max-width: ${({ theme }) => theme.sizes.large}px;
     padding: 8px 0;
     margin: 0 auto;
+
     ${({ theme }) => theme.media.medium`
+    display: none;
+    padding: 0px;
+    `}
+
+    ${({ theme }) => theme.media.small`
     display: none;
     padding: 0px;
     `}

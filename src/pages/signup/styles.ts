@@ -7,6 +7,10 @@ export namespace SignupStyle {
     ${({ theme }) => theme.media.medium`
     padding: 0;
     `}
+
+    ${({ theme }) => theme.media.small`
+    padding: 0;
+    `}
   `;
 
   export const Container = styled.div`
@@ -21,7 +25,14 @@ export namespace SignupStyle {
     & > *:not(:last-of-type) {
       margin-bottom: 20px;
     }
+
     ${({ theme }) => theme.media.medium`
+    padding: 30px;
+    height: 100vh;
+    justify-content: center;
+    `}
+
+    ${({ theme }) => theme.media.small`
     padding: 30px;
     height: 100vh;
     justify-content: center;

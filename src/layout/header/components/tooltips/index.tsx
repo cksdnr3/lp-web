@@ -1,23 +1,38 @@
-import { CommentOutlined, ShopOutlined, UserOutlined } from '@ant-design/icons';
-import React from 'react';
+import { CommentOutlined, HomeOutlined, PlusSquareOutlined, ShopOutlined, UserOutlined } from '@ant-design/icons';
+import React, { CSSProperties, useMemo } from 'react';
+import { useSelector } from 'react-redux';
 import { RoutesUrl } from 'src/constants/routesUrl';
+import { selectDevice } from 'src/features/device/device.slice';
 import { GnbTooltipsStyle } from './styles';
 
 function GnbTooltips() {
+  const { device } = useSelector(selectDevice);
+
   return (
     <GnbTooltipsStyle.Tooltips>
       <GnbTooltipsStyle.Tolltip to={RoutesUrl.PRODUCTS_NEW}>
-        <ShopOutlined style={{ fontSize: '1.5rem' }} />
-        <span>판매하기</span>
+        {device === 'large' && <ShopOutlined />}
+        {(device === 'small' || device === 'medium') && <PlusSquareOutlined />}
+        <div>판매하기</div>
       </GnbTooltipsStyle.Tolltip>
       <GnbTooltipsStyle.Tolltip to={RoutesUrl.MYPAGE}>
-        <UserOutlined style={{ fontSize: '1.5rem' }} />
-        <span>내상점</span>
+        <UserOutlined />
+        <div>내상점</div>
       </GnbTooltipsStyle.Tolltip>
       <GnbTooltipsStyle.Tolltip to={RoutesUrl.TALK}>
-        <CommentOutlined style={{ fontSize: '1.5rem' }} />
-        <span>엘피톡</span>
+        <CommentOutlined />
+        <div>엘피톡</div>
       </GnbTooltipsStyle.Tolltip>
+      {(device === 'small' || device === 'medium') && (
+        <GnbTooltipsStyle.Tolltip to={RoutesUrl.HOME}>
+          <HomeOutlined />
+        </GnbTooltipsStyle.Tolltip>
+      )}
+      {(device === 'small' || device === 'medium') && (
+        <GnbTooltipsStyle.Tolltip to={RoutesUrl.FOLLOWING}>
+          <ShopOutlined />
+        </GnbTooltipsStyle.Tolltip>
+      )}
     </GnbTooltipsStyle.Tooltips>
   );
 }

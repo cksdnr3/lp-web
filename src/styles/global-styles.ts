@@ -111,7 +111,12 @@ export const GlobalStyle = createGlobalStyle`
   }
   body {
     line-height: 1;
+
     ${({ theme }) => theme.media.medium`
+    background-color: rgb(248, 248, 248);
+    `}
+
+    ${({ theme }) => theme.media.small`
     background-color: rgb(248, 248, 248);
     `}
   }

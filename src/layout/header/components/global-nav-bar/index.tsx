@@ -5,12 +5,15 @@ import { GlobalNavBarStyle } from './styles';
 import GnbTooltips from '../tooltips';
 import Category from 'src/layout/header/components/category';
 import Logo from 'src/components/logo';
+import { useSelector } from 'react-redux';
+import { selectDevice } from 'src/features/device/device.slice';
 
 function GlobalNavBar() {
+  const { device } = useSelector(selectDevice);
   return (
     <GlobalNavBarStyle.Wrapper>
       <GlobalNavBarStyle.Top>
-        <Logo size="medium" />
+        {device === 'large' && <Logo size="medium" />}
         <SearchBar />
         <GnbTooltips />
         <GlobalNavBarStyle.Icon>

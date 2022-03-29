@@ -1,7 +1,7 @@
 import { FormEvent, MouseEvent, useCallback, useEffect, useState } from 'react';
 import { useMutation, useQuery } from 'react-query';
 import { useNavigate } from 'react-router-dom';
-import { authAPI } from 'src/apis/auth';
+import { AuthApi } from 'src/apis/auth';
 import { RoutesUrl } from 'src/constants/routesUrl';
 import useInput from 'src/hooks/useInput';
 import { token } from 'src/utils/token';
@@ -21,17 +21,17 @@ export const useSignup = () => {
     isPasswordCheckError: false,
   });
 
-  const signup = useMutation(() => authAPI.post.create({ email: email.value, password: password.value }), {
+  const signup = useMutation(() => AuthApi.post.create({ email: email.value, password: password.value }), {
     onSuccess: () => navigate(RoutesUrl.LOGIN),
   });
 
   const identify = useMutation(
-    (event: MouseEvent<HTMLButtonElement>) => authAPI.post.emailIdentify({ email: email.value }),
+    (event: MouseEvent<HTMLButtonElement>) => AuthApi.post.emailIdentify({ email: email.value }),
     {},
   );
 
   const confirm = useMutation(
-    (event: MouseEvent<HTMLButtonElement>) => authAPI.post.emailConfirm({ code: code.value, email: email.value }),
+    (event: MouseEvent<HTMLButtonElement>) => AuthApi.post.emailConfirm({ code: code.value, email: email.value }),
     {},
   );
 

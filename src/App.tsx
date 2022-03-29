@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import KakaoAuth from './pages/auth/kakao.auth';
 import Login from './pages/login';
@@ -7,24 +7,38 @@ import { RoutesUrl } from 'src/constants/routesUrl';
 import Home from './pages/home';
 import { token } from './utils/token';
 import { useDispatch } from 'react-redux';
-import { userActions, UserState } from './features/user/userSlice';
+import { userActions, UserState } from './features/user/user.slice';
 import Layout from './layout';
 import jwtDecode from 'jwt-decode';
 import MyPage from './pages/my-page';
 import ProductsNew from './pages/products-new';
 import Talk from './pages/talk';
+import { deviceActions } from './features/device/device.slice';
+import { ThemeContext } from 'styled-components';
 
 function App() {
   const dispatch = useDispatch();
+  const { sizes } = useContext(ThemeContext);
 
   useEffect(() => {
     const accessToken = token.getAccessToken();
 
     if (accessToken) {
       const decoded = jwtDecode<UserState>(accessToken);
-      console.log(decoded);
       dispatch(userActions.login(decoded));
     }
+  }, []);
+
+  useEffect(() => {
+    const device = window.innerWidth > sizes.medium ? 'large' : window.innerWidth > sizes.small ? 'medium' : 'small';
+
+    dispatch(deviceActions.setDevice({ device }));
+    const resize = () => {
+      const device = window.innerWidth > sizes.medium ? 'large' : window.innerWidth > sizes.small ? 'medium' : 'small';
+      dispatch(deviceActions.setDevice({ device }));
+    };
+    window.addEventListener('resize', resize);
+    return () => window.removeEventListener('resize', resize);
   }, []);
 
   return (

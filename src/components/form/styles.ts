@@ -20,10 +20,18 @@ export namespace FormStyle {
     }
 
     ${({ theme }) => theme.media.medium`
-    font-size: 1.5rem;
+    font-size: 18px;
 
     p {
-      font-size: 0.8rem;
+      font-size: 14px;
+    }
+    `}
+
+    ${({ theme }) => theme.media.small`
+    font-size: 18px;
+
+    p {
+      font-size: 14px;
     }
     `}
   `;

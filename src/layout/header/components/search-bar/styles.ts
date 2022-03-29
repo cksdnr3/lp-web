@@ -14,19 +14,32 @@ export namespace SearchBarStyle {
     width: 100%;
     padding: 0;
     border: none;
-    `}
+    `};
 
-    ${({ theme }) => theme.media.large`
-    
+    ${({ theme }) => theme.media.small`
+    ${theme.flexSet({ align: 'center' })};
+    flex: 1;
+    width: 100%;
+    padding: 0;
+    border: none;
     `};
   `;
 
   export const Input = styled.input`
     width: 100%;
-    padding: 0;
+    padding: 0px;
+
     ${({ theme }) => theme.media.medium`
     width: 100%;
-    padding: 11px 2px;
+    padding: 11px 6px;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    `}
+
+    ${({ theme }) => theme.media.small`
+    width: 100%;
+    padding: 11px 6px;
     border: none;
     border-radius: 4px;
     font-size: 14px;
@@ -37,7 +50,13 @@ export namespace SearchBarStyle {
     ${({ theme }) => theme.media.medium`
     ${theme.flexSet({ justify: 'space-between' })};
     width: 100%;
-    color: #000;
+    color: rgb(${theme.palette.white[900]});
+    `}
+
+    ${({ theme }) => theme.media.small`
+    ${theme.flexSet({ justify: 'space-between' })};
+    width: 100%;
+    color: rgb(${theme.palette.white[900]});
     `}
   `;
 
@@ -48,8 +67,15 @@ export namespace SearchBarStyle {
     ${({ theme }) => theme.media.medium`
     ${theme.flexSet({ align: 'center', justify: 'center' })};
     width: 45px;
-    font-size: 1.4rem;
-    color: #000;
+    font-size: 22px;
+    color: rgb(${theme.palette.white[900]});
+    `}
+
+    ${({ theme }) => theme.media.small`
+    ${theme.flexSet({ align: 'center', justify: 'center' })};
+    width: 45px;
+    font-size: 22px;
+    color: rgb(${theme.palette.white[900]});
     `}
   `;
 }

@@ -26,5 +26,10 @@ export namespace ButtonStyle {
     padding: 12px 5px;
     font-size: 14px;
     `}
+
+    ${({ theme }) => theme.media.small`
+    padding: 12px 5px;
+    font-size: 14px;
+    `}
   `;
 }
