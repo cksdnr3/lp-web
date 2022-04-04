@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { RoutesUrl } from 'src/constants/routesUrl';
 import { selectDevice } from 'src/features/device/device.slice';
 import { selectUser } from 'src/features/user/user.slice';
-import { useHeader } from '../../hook';
+import { useHeader } from '../../hooks/header.hook';
 import { StatusBarStyle } from './styles';
 
 type StatusBarProps = ReturnType<typeof useHeader>;

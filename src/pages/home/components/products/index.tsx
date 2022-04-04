@@ -1,15 +1,17 @@
 import React from 'react';
+import { IGetProductsResponseBody } from 'src/apis/products/types';
 import Card from 'src/components/card';
 import { addComma } from 'src/utils/number/addComma';
-import { useProducts } from '../hook';
 import { ProductsStyle } from './styles';
 
-type ProductsProps = ReturnType<typeof useProducts>;
+interface IProductsProps {
+  products?: IGetProductsResponseBody[];
+}
 
-function Products({ query }: ProductsProps) {
+function Products({ products }: IProductsProps) {
   return (
     <ProductsStyle.Wrapper>
-      {query.products.data?.map((product) => (
+      {products?.map((product) => (
         <Card
           key={product.id}
           title={product.title}

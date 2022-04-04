@@ -4,6 +4,8 @@ export const GlobalStyle = createGlobalStyle`
   ${reset};
   * {
     box-sizing: border-box;
+    font-smooth: antialiased;
+    font-family: 'Open Sans', 'Noto Sans KR', sans-serif, sans-serif;
   }
 
   html,
@@ -110,7 +112,6 @@ export const GlobalStyle = createGlobalStyle`
     display: block;
   }
   body {
-    line-height: 1;
 
     ${({ theme }) => theme.media.medium`
     background-color: rgb(248, 248, 248);

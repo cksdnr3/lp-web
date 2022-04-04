@@ -3,10 +3,12 @@ import { useProducts } from '../hook';
 import Products from '../products';
 import { ContentsStyle } from './styles';
 
-function Contents() {
+type ContentsProps = ReturnType<typeof useProducts>;
+
+function Contents({ query }: ContentsProps) {
   return (
     <ContentsStyle.Wrapper>
-      <Products {...useProducts()} />
+      <Products products={query.products.data} />
     </ContentsStyle.Wrapper>
   );
 }

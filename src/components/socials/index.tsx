@@ -58,7 +58,12 @@ function Socials({ types }: ISocialsProps) {
   }, [types]);
   return (
     <SocialsStyle.Wrapper>
-      {socials.map((social, index) => social && <a key={index} style={social.style} href={social.href} />)}
+      {socials.map(
+        (social, index) =>
+          social && (
+            <a key={index} style={social.style} href="#" onClick={() => window.location.replace(social.href)} />
+          ),
+      )}
     </SocialsStyle.Wrapper>
   );
 }

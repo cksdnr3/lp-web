@@ -11,7 +11,7 @@ function Home() {
         <Banner />
       </HomeStyle.Section>
       <HomeStyle.Section>
-        <Contents />
+        <Contents {...useProducts()} />
       </HomeStyle.Section>
     </HomeStyle.Wrapper>
   );

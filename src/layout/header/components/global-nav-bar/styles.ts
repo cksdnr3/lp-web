@@ -3,8 +3,8 @@ import styled from 'styled-components';
 export namespace GlobalNavBarStyle {
   export const Wrapper = styled.div`
     position: sticky;
-    top: 2px;
-    padding: 15px 0px 0px;
+    top: 0px;
+    padding: 15px 0px;
     border-bottom: 1px solid rgb(${({ theme }) => theme.palette.white[300]});
     background-color: rgb(${({ theme }) => theme.palette.white[100]});
     z-index: 11;
@@ -20,7 +20,7 @@ export namespace GlobalNavBarStyle {
     `}
   `;
 
-  export const Top = styled.div`
+  export const Container = styled.div`
     ${({ theme }) => theme.flexSet({ align: 'center', justify: 'space-between' })};
     width: 100%;
     max-width: 1024px;
@@ -36,21 +36,6 @@ export namespace GlobalNavBarStyle {
     ${theme.flexSet({ align: 'center', justify: 'space-between' })};
     padding: 7px 0px;
     border-bottom: 1px solid ${theme.main.color()};
-    `}
-  `;
-
-  export const Bottom = styled.div`
-    position: relative;
-    padding: 10px 0;
-    max-width: 1024px;
-    margin: 0 auto;
-
-    ${({ theme }) => theme.media.medium`
-    display: none;
-    `}
-
-    ${({ theme }) => theme.media.small`
-    display: none;
     `}
   `;
 

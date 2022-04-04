@@ -49,6 +49,7 @@ export namespace GnbTooltipsStyle {
     bottom: 0;
     width: 100%;
     padding: 15px 17px;
+    background-color: #fff;
     border-top: 1px solid rgb(${theme.palette.white[300]}, 0.5);
 
     & > a:not(:first-of-type) {

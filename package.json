@@ -10,7 +10,6 @@
     "@testing-library/user-event": "^13.5.0",
     "@types/jest": "^27.4.1",
     "@types/node": "^16.11.26",
-    "@types/qs": "^6.9.7",
     "@types/react": "^17.0.41",
     "@types/react-dom": "^17.0.14",
     "axios": "^0.26.1",
@@ -18,6 +17,7 @@
     "qs": "^6.10.3",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-helmet-async": "^1.2.3",
     "react-query": "^3.34.16",
     "react-redux": "^7.2.6",
     "react-router-dom": "^6.2.2",
@@ -52,6 +52,8 @@
     ]
   },
   "devDependencies": {
-    "@types/styled-components": "^5.1.24"
+    "@types/qs": "^6.9.7",
+    "@types/styled-components": "^5.1.24",
+    "react-test-renderer": "^18.0.0"
   }
 }

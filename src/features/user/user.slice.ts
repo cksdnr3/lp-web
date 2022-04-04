@@ -24,6 +24,8 @@ export const userSlice = createSlice({
   reducers: {
     login(state, { payload }: PayloadAction<UserState>) {
       state.name = payload.name;
+      state.email = payload.email;
+      state.role = payload.role;
     },
     logout() {
       return {

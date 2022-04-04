@@ -9,6 +9,8 @@ import App from './App';
 import store from './store';
 import { GlobalStyle } from './styles/global-styles';
 import { theme } from './styles/theme';
+import { HelmetProvider } from 'react-helmet-async';
+import HelmetFont from './components/helmet-font';
 
 axios.defaults.baseURL = 'http://localhost:8080';
 const queryClient = new QueryClient();
@@ -20,7 +22,10 @@ ReactDOM.render(
         <GlobalStyle />
         <QueryClientProvider client={queryClient}>
           <Provider store={store}>
-            <App />
+            <HelmetProvider>
+              <HelmetFont />
+              <App />
+            </HelmetProvider>
           </Provider>
         </QueryClientProvider>
       </ThemeProvider>
