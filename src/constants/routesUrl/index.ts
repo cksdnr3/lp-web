@@ -7,4 +7,5 @@ export namespace RoutesUrl {
   export const PRODUCTS_NEW = '/products/new';
   export const TALK = '/talk';
   export const FOLLOWING = '/followings';
+  export const PRODUCTS = '/products';
 }

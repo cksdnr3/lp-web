@@ -14,10 +14,9 @@ export namespace Validate {
   };
 
   export const nill = (param: any): boolean => {
-    // if (typeof param === ``)
     if (typeof param === 'string') {
-      return param === undefined || param === null || param.length === 0;
+      return param.length !== 0;
     }
-    return false;
+    return true;
   };
 }

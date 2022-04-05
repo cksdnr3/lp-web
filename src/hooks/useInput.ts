@@ -4,7 +4,7 @@ type Validator = (value: string) => boolean;
 
 const useInput = (initialstate: string, validator?: Validator) => {
   const [value, setValue] = useState<string>(initialstate);
-  const [isValid, setIsValid] = useState<boolean>();
+  const [isValid, setIsValid] = useState<boolean>(false);
 
   const onChange = useCallback(
     (event: ChangeEvent<HTMLInputElement>) => {

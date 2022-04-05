@@ -9,6 +9,7 @@ export namespace StatusBarStyle {
   `;
   export const Container = styled.div`
     ${({ theme }) => theme.flexSet({ align: 'center', justify: 'space-between' })};
+    position: relative;
     max-width: ${({ theme }) => theme.sizes.large}px;
     padding: 8px 0;
     margin: 0 auto;
@@ -26,6 +27,7 @@ export namespace StatusBarStyle {
 
   export const Status = styled.div`
     ${({ theme }) => theme.flexSet({ align: 'center' })};
+
     & > *:not(:first-child) {
       margin-left: 25px;
     }
@@ -33,6 +35,14 @@ export namespace StatusBarStyle {
     *:hover {
       color: rgba(96, 154, 233);
     }
+  `;
+
+  export const NotificationBox = styled.div`
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 300px;
+    z-index: 1000;
   `;
 
   export const Button = styled.button``;

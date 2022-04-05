@@ -15,6 +15,7 @@ import ProductsNew from './pages/products-new';
 import Talk from './pages/talk';
 import { deviceActions } from './features/device/device.slice';
 import { ThemeContext } from 'styled-components';
+import Products from './pages/products';
 
 function App() {
   const dispatch = useDispatch();
@@ -48,6 +49,7 @@ function App() {
         <Route path={RoutesUrl.MYPAGE} element={<MyPage />} />
         <Route path={RoutesUrl.PRODUCTS_NEW} element={<ProductsNew />} />
         <Route path={RoutesUrl.TALK} element={<Talk />} />
+        <Route path={RoutesUrl.PRODUCTS} element={<Products />} />
       </Route>
       <Route path={RoutesUrl.LOGIN} element={<Login />} />
       <Route path={RoutesUrl.SIGNUP} element={<Signup />} />

@@ -36,6 +36,7 @@ function StatusBar({ query, state }: StatusBarProps) {
             </>
           )}
         </StatusBarStyle.Status>
+        <StatusBarStyle.NotificationBox>알림박스</StatusBarStyle.NotificationBox>
       </StatusBarStyle.Container>
     </StatusBarStyle.Wrapper>
   );

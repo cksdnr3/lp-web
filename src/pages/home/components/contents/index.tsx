@@ -1,6 +1,6 @@
 import React from 'react';
 import { useProducts } from '../hook';
-import Products from '../products';
+import Products from '../../../../components/products';
 import { ContentsStyle } from './styles';
 
 type ContentsProps = ReturnType<typeof useProducts>;

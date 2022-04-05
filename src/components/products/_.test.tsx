@@ -2,7 +2,7 @@ import '@testing-library/jest-dom';
 import { render } from 'src/utils/test/render';
 import Products from '.';
 
-import { products } from '../../../../../__fixtures__/products';
+import { products } from '../../../__fixtures__/products';
 
 describe('<Products />', () => {
   it('Render - <Products />', () => {

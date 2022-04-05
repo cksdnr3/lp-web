@@ -4,6 +4,7 @@ import styled from 'styled-components';
 export namespace SearchBarStyle {
   export const Wrapper = styled.div`
     ${({ theme }) => theme.flexSet({ align: 'center' })};
+    position: relative;
     border: 2px solid ${({ theme }) => theme.main.color('light')};
     width: 460px;
     padding: 7px 15px;
@@ -63,6 +64,7 @@ export namespace SearchBarStyle {
   export const Icon = styled.div`
     color: ${({ theme }) => theme.main.color('light')};
     font-size: 1.1rem;
+    cursor: pointer;
 
     ${({ theme }) => theme.media.medium`
     ${theme.flexSet({ align: 'center', justify: 'center' })};

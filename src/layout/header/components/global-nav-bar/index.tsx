@@ -7,8 +7,11 @@ import Category from 'src/layout/header/components/category';
 import Logo from 'src/components/logo';
 import { useSelector } from 'react-redux';
 import { selectDevice } from 'src/features/device/device.slice';
+import { useSearch } from '../../hooks/search.hook';
 
-function GlobalNavBar() {
+type GlobalNavBarProps = ReturnType<typeof useSearch>;
+
+function GlobalNavBar(props: GlobalNavBarProps) {
   const { device } = useSelector(selectDevice);
   const [drop, setDrop] = useState(false);
 
@@ -25,7 +28,7 @@ function GlobalNavBar() {
             {<Logo size="medium" />}
           </div>
         )}
-        <SearchBar />
+        <SearchBar {...props} />
         <GnbTooltips />
         <GlobalNavBarStyle.Icon>
           <HeartOutlined />
