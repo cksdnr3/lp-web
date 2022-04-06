@@ -16,7 +16,7 @@ test('dispatch - login', () => {
   expect(
     reducer(
       userSlice.getInitialState(),
-      userSlice.actions.login({ email: 'user@naver.com', name: 'chanuk', role: 'USER' }),
+      userSlice.actions.login({ id: 0, email: 'user@naver.com', name: 'chanuk', role: 'USER' }),
     ),
   ).toEqual({
     email: 'user@naver.com',

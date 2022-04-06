@@ -1,5 +1,5 @@
 import styled from 'styled-components';
 
-export namespace ActivityStyles {
+export namespace UsersStyles {
   export const Wrapper = styled.div``;
 }

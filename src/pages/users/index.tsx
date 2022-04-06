@@ -1,15 +1,15 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
 import Profile from './components/profile';
-import { MypageStyles } from './styles';
+import { UsersStyles } from './styles';
 
-function MyPage() {
+function Users() {
   return (
-    <MypageStyles.Wrapper>
+    <UsersStyles.Wrapper>
       <Profile />
       <Outlet />
-    </MypageStyles.Wrapper>
+    </UsersStyles.Wrapper>
   );
 }
 
-export default MyPage;
+export default Users;

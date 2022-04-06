@@ -144,11 +144,15 @@ export const GlobalStyle = createGlobalStyle`
     border-spacing: 0;
   }
 
-  input {
+  input, textarea {
     border: none;
     outline: none;
     appearance: none;
+    background-color: inherit;
+    resize: none;
   }
+
+
   button {
     border: none;
     outline: none;

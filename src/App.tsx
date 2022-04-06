@@ -10,13 +10,20 @@ import { useDispatch } from 'react-redux';
 import { userActions, UserState } from './features/user/user.slice';
 import Layout from './layout';
 import jwtDecode from 'jwt-decode';
-import MyPage from './pages/my-page';
+import Users from './pages/users';
 import ProductsNew from './pages/products-new';
 import Talk from './pages/talk';
 import { deviceActions } from './features/device/device.slice';
 import { ThemeContext } from 'styled-components';
 import Products from './pages/products';
-import Activity from './pages/my-page/components/activity';
+import User from './pages/users/components/user';
+import ProductsComponents from 'src/components/products';
+import ActivityProducts from './pages/users/components/activity/activity.products';
+import ActivityComments from './pages/users/components/activity/activity.comments';
+import ActivityReviews from './pages/users/components/activity/activity.reviews';
+import ActivityLikes from './pages/users/components/activity/activity.likes';
+import ActivityFollowings from './pages/users/components/activity/activity.followings';
+import ActivityFollowers from './pages/users/components/activity/activity.followers';
 
 function App() {
   const dispatch = useDispatch();
@@ -27,6 +34,7 @@ function App() {
 
     if (accessToken) {
       const decoded = jwtDecode<UserState>(accessToken);
+
       dispatch(userActions.login(decoded));
     }
   }, []);
@@ -47,10 +55,18 @@ function App() {
     <Routes>
       <Route path={RoutesUrl.HOME} element={<Layout />}>
         <Route path={RoutesUrl.HOME} element={<Home />} />
-        <Route path={RoutesUrl.MYPAGE} element={<MyPage />}>
-          <Route path={':activity'} element={<Activity />} />
+        <Route path={RoutesUrl.USERS} element={<Users />}>
+          <Route path={':id'} element={<User />}>
+            <Route path={'products'} element={<ActivityProducts />} />
+            <Route path={'comments'} element={<ActivityComments />} />
+            <Route path={'likes'} element={<ActivityLikes />} />
+            <Route path={'reviews'} element={<ActivityReviews />} />
+            <Route path={'followings'} element={<ActivityFollowings />} />
+            <Route path={'followers'} element={<ActivityFollowers />} />
+          </Route>
         </Route>
-        <Route path={RoutesUrl.PRODUCTS_NEW} element={<ProductsNew />} />
+        <Route path={RoutesUrl.MYPAGE} />
+        <Route path={''} element={<ProductsNew />} />
         <Route path={RoutesUrl.TALK} element={<Talk />} />
         <Route path={RoutesUrl.PRODUCTS} element={<Products />} />
       </Route>

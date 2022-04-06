@@ -3,19 +3,21 @@ import React, { CSSProperties, useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import { RoutesUrl } from 'src/constants/routesUrl';
 import { selectDevice } from 'src/features/device/device.slice';
+import { selectUser } from 'src/features/user/user.slice';
 import { GnbTooltipsStyle } from './styles';
 
 function GnbTooltips() {
   const { device } = useSelector(selectDevice);
+  const { id } = useSelector(selectUser);
 
   return (
     <GnbTooltipsStyle.Tooltips>
-      <GnbTooltipsStyle.Tolltip to={RoutesUrl.PRODUCTS_NEW}>
+      <GnbTooltipsStyle.Tolltip to={''}>
         {device === 'large' && <ShopOutlined />}
         {(device === 'small' || device === 'medium') && <PlusSquareOutlined />}
         <div>판매하기</div>
       </GnbTooltipsStyle.Tolltip>
-      <GnbTooltipsStyle.Tolltip to={`${RoutesUrl.MYPAGE}/products`}>
+      <GnbTooltipsStyle.Tolltip to={`${RoutesUrl.USERS}/${id}${RoutesUrl.PRODUCTS}`}>
         <UserOutlined />
         <div>내상점</div>
       </GnbTooltipsStyle.Tolltip>
@@ -29,7 +31,7 @@ function GnbTooltips() {
         </GnbTooltipsStyle.Tolltip>
       )}
       {(device === 'small' || device === 'medium') && (
-        <GnbTooltipsStyle.Tolltip to={RoutesUrl.FOLLOWING}>
+        <GnbTooltipsStyle.Tolltip to={RoutesUrl.FOLLOWINGS}>
           <ShopOutlined />
         </GnbTooltipsStyle.Tolltip>
       )}

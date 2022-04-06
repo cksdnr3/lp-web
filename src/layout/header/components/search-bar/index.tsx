@@ -14,13 +14,13 @@ function SearchBar(props: SearchBarProps) {
     <SearchBarStyle.Wrapper ref={ref}>
       <SearchBarStyle.Input
         {...props.input.search}
-        onKeyPress={(event) => {
-          if (event.key === 'Enter' && props.input.search.isValid) props.event.onSearch(props.input.search.value);
-        }}
+        onKeyPress={(event) =>
+          event.key === 'Enter' && props.input.search.isValid && props.event.onSearch(props.input.search.value)
+        }
         onFocus={props.event.onOpenSearchBox}
         placeholder="찾고 싶은 상품을 검색해보세요"
       />
-      <SearchBarStyle.Icon onClick={() => props.event.onSearch(props.input.search.value)}>
+      <SearchBarStyle.Icon onClick={() => props.input.search.isValid && props.event.onSearch(props.input.search.value)}>
         <SearchOutlined />
       </SearchBarStyle.Icon>
       {props.state.toggleSearchBox && <SearchBox {...props} />}

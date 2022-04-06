@@ -7,12 +7,14 @@ const ROLE = {
 } as const;
 
 export interface UserState {
+  id: number;
   email: string;
   name: string;
   role: keyof typeof ROLE;
 }
 
 const initialState: UserState = {
+  id: -1,
   email: '',
   name: '',
   role: 'NONE',
@@ -26,6 +28,7 @@ export const userSlice = createSlice({
       state.name = payload.name;
       state.email = payload.email;
       state.role = payload.role;
+      state.id = payload.id;
     },
     logout() {
       return {
