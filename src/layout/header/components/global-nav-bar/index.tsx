@@ -24,7 +24,7 @@ function GlobalNavBar(props: GlobalNavBarProps) {
       <GlobalNavBarStyle.Container>
         {device === 'large' && (
           <div style={{ display: 'flex', alignItems: 'cneter' }}>
-            <MenuOutlined onMouseEnter={toggleMenu} style={{ fontSize: '21px', cursor: 'pointer', marginRight: 18 }} />
+            <MenuOutlined onMouseEnter={toggleMenu} style={{ fontSize: '23px', cursor: 'pointer', marginRight: 18 }} />
             {<Logo size="medium" />}
           </div>
         )}

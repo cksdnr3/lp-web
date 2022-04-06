@@ -1,16 +1,17 @@
-import { DownloadOutlined, MobileOutlined, StarFilled, StarTwoTone } from '@ant-design/icons';
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useRef } from 'react';
+import { CaretDownOutlined, DownloadOutlined, StarTwoTone } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
 import { RoutesUrl } from 'src/constants/routesUrl';
-import { selectDevice } from 'src/features/device/device.slice';
-import { selectUser } from 'src/features/user/user.slice';
 import { useHeader } from '../../hooks/header.hook';
+import NotificationBox from '../notification-box';
 import { StatusBarStyle } from './styles';
+import { useClickOutside } from 'src/hooks/useClickOutside';
 
 type StatusBarProps = ReturnType<typeof useHeader>;
 
-function StatusBar({ query, state }: StatusBarProps) {
+function StatusBar({ query, state, event }: StatusBarProps) {
+  const ref = useRef(null);
+  useClickOutside(ref, event.onCloseNotification);
   return (
     <StatusBarStyle.Wrapper>
       <StatusBarStyle.Container>
@@ -31,12 +32,16 @@ function StatusBar({ query, state }: StatusBarProps) {
           ) : (
             <>
               <StatusBarStyle.Button onClick={query.logout.mutate}>로그아웃</StatusBarStyle.Button>
-              <StatusBarStyle.Button>알림</StatusBarStyle.Button>
+              <StatusBarStyle.Dropdown ref={ref} onClick={event.onToggleNotification}>
+                <span>
+                  알림 <CaretDownOutlined />
+                </span>
+                {state.notificationToggle && <NotificationBox />}
+              </StatusBarStyle.Dropdown>
               <Link to={RoutesUrl.MYPAGE}>내 상점</Link>
             </>
           )}
         </StatusBarStyle.Status>
-        <StatusBarStyle.NotificationBox>알림박스</StatusBarStyle.NotificationBox>
       </StatusBarStyle.Container>
     </StatusBarStyle.Wrapper>
   );

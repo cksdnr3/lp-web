@@ -15,7 +15,7 @@ function GnbTooltips() {
         {(device === 'small' || device === 'medium') && <PlusSquareOutlined />}
         <div>판매하기</div>
       </GnbTooltipsStyle.Tolltip>
-      <GnbTooltipsStyle.Tolltip to={RoutesUrl.MYPAGE}>
+      <GnbTooltipsStyle.Tolltip to={`${RoutesUrl.MYPAGE}/products`}>
         <UserOutlined />
         <div>내상점</div>
       </GnbTooltipsStyle.Tolltip>

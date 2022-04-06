@@ -17,7 +17,7 @@ export namespace CardStyles {
 
   export const Image = styled.img`
     width: 100%;
-    height: 143px;
+    height: 155px;
     border-radius: 11px;
 
     ${({ theme }) => theme.media.small`

@@ -3,6 +3,7 @@ import styled from 'styled-components';
 export namespace StatusBarStyle {
   export const Wrapper = styled.div`
     border-bottom: 1px solid rgb(${({ theme }) => theme.palette.white[300]});
+    background-color: rgb(${({ theme }) => theme.palette.white[100]});
     * {
       font-size: 12px;
     }
@@ -11,7 +12,8 @@ export namespace StatusBarStyle {
     ${({ theme }) => theme.flexSet({ align: 'center', justify: 'space-between' })};
     position: relative;
     max-width: ${({ theme }) => theme.sizes.large}px;
-    padding: 8px 0;
+    /* padding: 8px 0; */
+    height: 25px;
     margin: 0 auto;
 
     ${({ theme }) => theme.media.medium`
@@ -27,23 +29,27 @@ export namespace StatusBarStyle {
 
   export const Status = styled.div`
     ${({ theme }) => theme.flexSet({ align: 'center' })};
+    height: 100%;
 
     & > *:not(:first-child) {
       margin-left: 25px;
     }
+  `;
 
-    *:hover {
+  export const Button = styled.button`
+    &:hover {
       color: rgba(96, 154, 233);
     }
   `;
 
-  export const NotificationBox = styled.div`
-    position: absolute;
-    top: 100%;
-    right: 0;
-    width: 300px;
-    z-index: 1000;
-  `;
+  export const Dropdown = styled.div`
+    ${({ theme }) => theme.flexSet({ align: 'center' })};
+    cursor: pointer;
+    position: relative;
+    height: 100%;
 
-  export const Button = styled.button``;
+    & > span:hover {
+      color: rgba(96, 154, 233);
+    }
+  `;
 }

@@ -8,6 +8,8 @@ export const GlobalStyle = createGlobalStyle`
     font-family: 'Open Sans', 'Noto Sans KR', sans-serif, sans-serif;
   }
 
+  font-size: 14px;
+
   html,
   body,
   div,
@@ -112,6 +114,7 @@ export const GlobalStyle = createGlobalStyle`
     display: block;
   }
   body {
+    background-color: rgb(248, 248, 248);
 
     ${({ theme }) => theme.media.medium`
     background-color: rgb(248, 248, 248);

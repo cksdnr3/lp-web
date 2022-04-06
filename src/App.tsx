@@ -16,6 +16,7 @@ import Talk from './pages/talk';
 import { deviceActions } from './features/device/device.slice';
 import { ThemeContext } from 'styled-components';
 import Products from './pages/products';
+import Activity from './pages/my-page/components/activity';
 
 function App() {
   const dispatch = useDispatch();
@@ -46,7 +47,9 @@ function App() {
     <Routes>
       <Route path={RoutesUrl.HOME} element={<Layout />}>
         <Route path={RoutesUrl.HOME} element={<Home />} />
-        <Route path={RoutesUrl.MYPAGE} element={<MyPage />} />
+        <Route path={RoutesUrl.MYPAGE} element={<MyPage />}>
+          <Route path={':activity'} element={<Activity />} />
+        </Route>
         <Route path={RoutesUrl.PRODUCTS_NEW} element={<ProductsNew />} />
         <Route path={RoutesUrl.TALK} element={<Talk />} />
         <Route path={RoutesUrl.PRODUCTS} element={<Products />} />

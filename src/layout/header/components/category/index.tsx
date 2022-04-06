@@ -10,7 +10,7 @@ interface ICategoryProps {
 function Category({ drop, toggleMenu }: ICategoryProps) {
   return (
     <CategoryStyle.Wrapper onMouseLeave={toggleMenu}>
-      <Dropdown drop={drop} items={['Rock', 'Ballad', 'Hiphop']} />
+      <Dropdown drop={drop} items={['락', '발라드', '힙합']} />
     </CategoryStyle.Wrapper>
   );
 }
