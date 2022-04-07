@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
 import { RoutesUrl } from 'src/constants/routesUrl';
 import { selectUser } from 'src/features/user/user.slice';
+import { theme } from 'src/styles/theme';
 import { ProfileStyles } from './styles';
 
 const rating = 3;
@@ -12,6 +13,8 @@ const visit = 10000;
 const sell = 30321;
 const ship = 2112;
 const info = '안녕하세요 ~ ';
+
+const MAX_RATING = 5;
 
 function Profile() {
   const { name, id } = useSelector(selectUser);
@@ -27,27 +30,30 @@ function Profile() {
         <ProfileStyles.Account me={`${id}` === params.id}>
           {name} {`${id}` === params.id && <EditOutlined style={{ fontSize: 14 }} />}
         </ProfileStyles.Account>
-        <ProfileStyles.Rating>
-          {Array.from(Array(rating), (_, index) => (
-            <StarTwoTone key={index} twoToneColor="red" style={{ fontSize: 14 }} />
+        <ProfileStyles.Ratings>
+          {Array.from(Array(MAX_RATING), (_, index) => (
+            <ProfileStyles.Rating
+              key={index}
+              twoToneColor={index < rating ? theme.main.color('dark', 0.5) : `rgb(${theme.palette.white[500]})`}
+            />
           ))}
-        </ProfileStyles.Rating>
+        </ProfileStyles.Ratings>
         <ProfileStyles.DetailContainer>
           <ProfileStyles.Detail>
             <div>오픈일</div>
-            <span>{open}일전</span>
+            <span style={{ color: '#ff9614' }}>{open}일전</span>
           </ProfileStyles.Detail>
           <ProfileStyles.Detail>
             <div>방문수</div>
-            <span>{visit}명</span>
+            <span style={{ color: '#289aff' }}>{visit}명</span>
           </ProfileStyles.Detail>
           <ProfileStyles.Detail>
             <div>판매수</div>
-            <span>{sell}회</span>
+            <span style={{ color: '#147814' }}>{sell}회</span>
           </ProfileStyles.Detail>
           <ProfileStyles.Detail>
             <div>택배 발송</div>
-            <span>{ship}회</span>
+            <span style={{ color: '#1e9e9e' }}>{ship}회</span>
           </ProfileStyles.Detail>
         </ProfileStyles.DetailContainer>
         <ProfileStyles.StyledLink to={RoutesUrl.MYPAGE}>내 상점 관리</ProfileStyles.StyledLink>

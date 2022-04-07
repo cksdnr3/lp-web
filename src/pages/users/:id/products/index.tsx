@@ -2,15 +2,16 @@ import React from 'react';
 import { useQuery } from 'react-query';
 import { ProductsApi } from 'src/apis/products';
 import Products from 'src/components/products';
-import { ActivityLayoutStyles } from './activity.layout.styles';
+import EmptyMessage from '../emty-message.component';
+import { ActivityProductsStyles } from './styles';
 
 function ActivityProducts() {
   const { data } = useQuery('/products', () => ProductsApi.get.products());
 
   return (
-    <ActivityLayoutStyles.Wrapper>
-      {!!data?.length ? <Products products={data} /> : <div>등록된 상품이 없습니다.</div>}
-    </ActivityLayoutStyles.Wrapper>
+    <ActivityProductsStyles.Wrapper>
+      {!!data?.length ? <></> : <EmptyMessage message={'등록된 상품이 없습니다.'} />}
+    </ActivityProductsStyles.Wrapper>
   );
 }
 

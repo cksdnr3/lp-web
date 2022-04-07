@@ -12,15 +12,16 @@ export namespace NotificationBoxStyles {
     box-shadow: 1px 2px 10px 0 rgb(0 0 0 / 30%);
     width: 300px;
     max-height: 480px;
-    overflow-y: scroll;
+    overflow-y: auto;
     z-index: 1000;
   `;
 
   export const Notification = styled.div`
-    padding: 6px 0;
+    border-radius: 4px;
+    padding: 8px 6px;
     cursor: pointer;
     &:hover {
-      background-color: rgb(227, 236, 248, 0.3);
+      background-color: rgb(227, 236, 248, 0.5);
     }
   `;
 }

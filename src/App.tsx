@@ -16,14 +16,13 @@ import Talk from './pages/talk';
 import { deviceActions } from './features/device/device.slice';
 import { ThemeContext } from 'styled-components';
 import Products from './pages/products';
-import User from './pages/users/components/user';
-import ProductsComponents from 'src/components/products';
-import ActivityProducts from './pages/users/components/activity/activity.products';
-import ActivityComments from './pages/users/components/activity/activity.comments';
-import ActivityReviews from './pages/users/components/activity/activity.reviews';
-import ActivityLikes from './pages/users/components/activity/activity.likes';
-import ActivityFollowings from './pages/users/components/activity/activity.followings';
-import ActivityFollowers from './pages/users/components/activity/activity.followers';
+import User from './pages/users/:id';
+import ActivityProducts from './pages/users/:id/products';
+import ActivityComments from './pages/users/:id/comments';
+import ActivityLikes from './pages/users/:id/likes';
+import ActivityFollowers from './pages/users/:id/followers';
+import ActivityFollowings from './pages/users/:id/followings';
+import ActivityReviews from './pages/users/:id/reviews';
 
 function App() {
   const dispatch = useDispatch();

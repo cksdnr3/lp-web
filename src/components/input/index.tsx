@@ -2,7 +2,7 @@ import React, { HTMLAttributes, HTMLInputTypeAttribute, ReactElement, useCallbac
 import { useRef } from 'react';
 import { InputStyle } from './styles';
 
-interface IInputProps extends HTMLAttributes<HTMLInputElement> {
+interface IInputProps extends HTMLAttributes<HTMLInputElement | HTMLTextAreaElement> {
   value: string;
   setValue: React.Dispatch<string>;
   type?: HTMLInputTypeAttribute;

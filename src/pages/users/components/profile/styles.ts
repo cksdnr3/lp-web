@@ -1,4 +1,4 @@
-import { CameraFilled } from '@ant-design/icons';
+import { CameraFilled, StarTwoTone } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
@@ -18,13 +18,19 @@ export namespace ProfileStyles {
     padding: 23px 0;
 
     & > *:not(:last-child) {
-      margin-bottom: 9px;
+      margin-bottom: 11px;
     }
   `;
 
   export const ImageWrapper = styled.div<{ me: boolean }>`
     position: relative;
     cursor: ${({ me }) => me && 'pointer'};
+
+    &:hover {
+      & > span {
+        background-color: rgb(0, 0, 0, 0.2);
+      }
+    }
   `;
 
   export const Image = styled.img`
@@ -34,18 +40,34 @@ export namespace ProfileStyles {
 
   export const ImageEdit = styled(CameraFilled)`
     position: absolute;
-    top: 47px;
-    right: 2px;
+    top: 43px;
+    right: 0px;
+    padding: 4px;
+    border-radius: 50%;
     color: rgb(${({ theme }) => theme.palette.white[600]});
     font-size: 24px;
+    transition: background 0.24s;
   `;
 
   export const Account = styled.div<{ me: boolean }>`
     color: rgb(${({ theme }) => theme.palette.white[100]});
     font-weight: 600;
     cursor: ${({ me }) => me && 'pointer'};
+
+    &:hover {
+      text-decoration: underline;
+    }
   `;
-  export const Rating = styled.div``;
+
+  export const Ratings = styled.div`
+    & > span:not(:last-child) {
+      margin-right: 1.5px;
+    }
+  `;
+
+  export const Rating = styled(StarTwoTone)`
+    font-size: 14px;
+  `;
 
   export const StyledLink = styled(Link)`
     border: 1px solid rgb(${({ theme }) => theme.palette.white[100]});
@@ -72,7 +94,6 @@ export namespace ProfileStyles {
     & > div:not(:last-of-type) {
       margin-right: 6px;
       border-right: 1px solid rgb(${({ theme }) => theme.palette.white[500]});
-      border-radius: 4px;
     }
   `;
 
@@ -87,11 +108,10 @@ export namespace ProfileStyles {
     }
 
     & > span {
-      color: ${({ theme }) => theme.main.color('light', 0.7)};
+      color: ${({ theme }) => theme.main.color('light', 0.5)};
       font-weight: 700;
     }
   `;
-  //  fontSize: 18, fontWeight: 600, cursor: `${id}` === params.id ? 'pointer' : '' }}>
   export const InfoEditButton = styled.div<{ me: boolean }>`
     font-size: 18px;
     font-weight: 600;

@@ -7,7 +7,7 @@ const useInput = (initialstate: string, validator?: Validator) => {
   const [isValid, setIsValid] = useState<boolean>(false);
 
   const onChange = useCallback(
-    (event: ChangeEvent<HTMLInputElement>) => {
+    (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
       setValue(event.target.value);
 
       if (validator) {

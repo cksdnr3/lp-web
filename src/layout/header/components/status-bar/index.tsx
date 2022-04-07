@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { CaretDownOutlined, DownloadOutlined, StarTwoTone } from '@ant-design/icons';
+import { CaretDownOutlined, CaretUpOutlined, DownloadOutlined, StarTwoTone } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
 import { RoutesUrl } from 'src/constants/routesUrl';
 import { useHeader } from '../../hooks/header.hook';
@@ -33,9 +33,7 @@ function StatusBar({ query, state, event }: StatusBarProps) {
             <>
               <StatusBarStyle.Button onClick={query.logout.mutate}>로그아웃</StatusBarStyle.Button>
               <StatusBarStyle.Dropdown ref={ref} onClick={event.onToggleNotification}>
-                <span>
-                  알림 <CaretDownOutlined />
-                </span>
+                <span>알림 {state.notificationToggle ? <CaretUpOutlined /> : <CaretDownOutlined />}</span>
                 {state.notificationToggle && <NotificationBox />}
               </StatusBarStyle.Dropdown>
               <Link to={RoutesUrl.MYPAGE}>내 상점</Link>

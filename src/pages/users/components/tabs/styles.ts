@@ -14,6 +14,7 @@ export namespace TabsStyles {
     }
 
     .active {
+      background-color: rgb(${({ theme }) => theme.palette.white[300]}, 0.5);
       color: ${({ theme }) => theme.main.color('dark')};
       font-weight: 700;
     }

@@ -1,6 +1,7 @@
 import React from 'react';
 import { useQuery } from 'react-query';
 import { useParams } from 'react-router-dom';
+import { CommentsApi } from 'src/apis/comments';
 import { ProductsApi } from 'src/apis/products';
 import { RoutesUrl } from 'src/constants/routesUrl';
 import { TabsStyles } from './styles';
@@ -8,6 +9,7 @@ import { TabsStyles } from './styles';
 function Tabs() {
   const params = useParams<{ activity: string; id: string }>();
   const { data: products } = useQuery('/products', () => ProductsApi.get.products());
+  const { data: comments } = useQuery('/comments', () => CommentsApi.get.comments());
 
   return (
     <TabsStyles.Wrapper>
@@ -16,13 +18,13 @@ function Tabs() {
           className={(nav) => (nav.isActive ? 'active' : '')}
           to={`${RoutesUrl.USERS}/${params.id}${RoutesUrl.PRODUCTS}`}
         >
-          상품 <span>{products?.length}</span>
+          상품 &nbsp; {products?.length}
         </TabsStyles.ActiveLink>
         <TabsStyles.ActiveLink
           className={(nav) => (nav.isActive ? 'active' : '')}
           to={`${RoutesUrl.USERS}/${params.id}${RoutesUrl.COMMENTS}`}
         >
-          상점문의
+          상점문의 &nbsp; {comments?.length}
         </TabsStyles.ActiveLink>
         <TabsStyles.ActiveLink
           className={(nav) => (nav.isActive ? 'active' : '')}

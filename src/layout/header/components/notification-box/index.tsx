@@ -4,10 +4,18 @@ import { NotificationBoxStyles } from './styles';
 function NotificationBox() {
   return (
     <NotificationBoxStyles.Wrapper>
-      <NotificationBoxStyles.Notification>알림 1</NotificationBoxStyles.Notification>
-      <NotificationBoxStyles.Notification>알림 2</NotificationBoxStyles.Notification>
-      <NotificationBoxStyles.Notification>알림 3</NotificationBoxStyles.Notification>
-      <NotificationBoxStyles.Notification>알림 4</NotificationBoxStyles.Notification>
+      <NotificationBoxStyles.Notification>
+        <div>gosu</div>
+        <div>blah blah</div>
+      </NotificationBoxStyles.Notification>
+      <NotificationBoxStyles.Notification>
+        <div>sellersel</div>
+        <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure delectus hic repellat earum accusamus.</div>
+      </NotificationBoxStyles.Notification>
+      <NotificationBoxStyles.Notification>
+        <div>cksdnr3</div>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi, nihil!</p>
+      </NotificationBoxStyles.Notification>
     </NotificationBoxStyles.Wrapper>
   );
 }
