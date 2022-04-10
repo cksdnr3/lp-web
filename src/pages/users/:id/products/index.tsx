@@ -1,7 +1,6 @@
 import React from 'react';
 import { useQuery } from 'react-query';
 import { ProductsApi } from 'src/apis/products';
-import Products from 'src/components/products';
 import EmptyMessage from '../emty-message.component';
 import { ActivityProductsStyles } from './styles';
 

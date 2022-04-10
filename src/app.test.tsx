@@ -8,7 +8,8 @@ import reducer, { userActions } from 'src/features/user/user.slice';
 describe('<App />', () => {
   it('Render - <App />', () => {
     const { container } = render(<App />);
-    expect(container);
+
+    expect(container).toBeInvalid();
   });
 
   it('Dispatch - login', () => {});
